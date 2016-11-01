@@ -23,6 +23,6 @@ var Product = db.define('products', {
     }
 });
 
-module.export = Product;
+module.exports = Product;
 
 // TO DO: Fix image routes
