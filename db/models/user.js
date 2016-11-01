@@ -13,6 +13,10 @@ const User = db.define('users', {
 			notEmpty: true,
 		}
   },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
 
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
@@ -48,3 +52,5 @@ function setEmailAndPassword(user) {
 }
 
 module.exports = User
+
+// TO DO: Shipping address // vendor (memories to sell)
