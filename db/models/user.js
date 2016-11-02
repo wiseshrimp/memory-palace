@@ -5,13 +5,17 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const User = db.define('users', {
-  name: Sequelize.STRING,  
+  name: Sequelize.STRING,
   email: {
     type: Sequelize.STRING,
     validate: {
 			isEmail: true,
 			notEmpty: true,
 		}
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   },
 
   // We support oauth, so users may or may not have passwords.
@@ -48,3 +52,5 @@ function setEmailAndPassword(user) {
 }
 
 module.exports = User
+
+// TO DO: Shipping address // vendor (memories to sell)
