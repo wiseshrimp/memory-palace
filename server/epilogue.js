@@ -27,5 +27,5 @@ const forbidden = message => (req, res, context) => {
   return context.stop
 }
 
-epilogue.filters = {mustBeLoggedIn, selfOnly, forbidden,}
+epilogue.filters = { mustBeLoggedIn, selfOnly, forbidden }
 module.exports = epilogue
