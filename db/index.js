@@ -30,93 +30,13 @@ const Genre = require('./models/genre');
 const Product = require('./models/product');
 const Review = require('./models/review');
 const Order = require('./models/order');
+const Cart = require('./models/cart');
 
 // sync the db, creating it if necessary
 function sync(force=app.isTesting) {
   return db.sync({ force: true })
-    .then(() => {
-      var userPromise = User.create({
-        name: 'User that has order',
-        email: 'RICHUSER@RICH.COM'
-      });
-
-      var productPromise = Product.create({
-        title: 'Test memory',
-        price: 20,
-        description: 'Test description'
-      });
-
-      var productPromise2 = Product.create({
-        title: 'Test memory2',
-        price: 50,
-        description: 'Test description'
-      });
-
-      var productPromise3 = Product.create({
-        title: 'Test memory3',
-        price: 26,
-        description: 'Test description'
-      });
-
-      Promise.all([userPromise, productPromise, productPromise2, productPromise3])
-        .spread((user, product, product2, product3) => {
-          return Promise.all([Order.create({
-            productIDs: [product.id, product2.id, product3.id],
-            priceAtPurchase: [product.price, product2.price, product3.price]
-          }), user])
-        })
-        .spread((order, user) => user.addOrder(order))
-      .catch(err => console.log(err))
-
-    //   var productIDs, priceArray;
-
-    // Promise.all([productPromise, productPromise2, productPromise3])
-    //         .spread((product1, product2, product3) => {
-    //           productIDs = [product1.id, product2.id, product3.id];
-    //           priceArray = [product1.price, product2.price, product3.price]
-    //   })
-    //   .then(() => {
-    //     userPromise.resolve();
-    //   })
-
-
-
-
-      // var orderPromise = Promise.all([productPromise, productPromise2, productPromise3])
-      //   .spread((product1, product2, product3) => {
-      //     Order.create({
-      //       productIDs: [product1.id, product2.id, product3.id],
-      //       priceAtPurchase: [product1.price, product2.price, product3.price]
-      //     })
-      //   })
-    
-      // Promise.all([userPromise, orderPromise])
-      //   .spread((user, order) => console.log(order))
-      //   .then(console.log('user and order created!'))
-      // .catch(err => console.log(err))
-
-// TEST TO MAKE SURE DATABASE IS WORKING:      
-  //     var userPromise = User.create({
-  //       name: 'Test Bro',
-  //       email: 'testbro@test.com'
-  //     });
-
-  //     var productPromise = Product.create({
-  //       title: 'Test memory',
-  //       price: 20,
-  //       description: 'Test description'
-  //     });
-
-  //     var genrePromise = Genre.create({
-  //       name: 'horror'
-  //     })
-      
-      // Promise.all([genrePromise, productPromise])
-  //       .spread((genre, product) => genre.addProduct(product))
-  //       .then(() => console.log('created genre and product'))
-  //       .catch(err => console.log(err));
-      
-  })  
+    .then(createProducts)
+    .then(createUsers)  
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       console.log(fail);
@@ -132,4 +52,44 @@ function sync(force=app.isTesting) {
     })
 }
 
-db.didSync = sync()
+let createProducts = () => {
+  return Genre.create({
+    name: 'Romantic',
+    products: [
+      {
+        title: 'My wedding day in paraiso',
+        price: 67.60,
+        description: 'The happiest day of your life'
+      },
+      {
+        title: 'My first kiss',
+        price: 3.33,
+        description: 'With Matt Parkin'
+      }
+    ]
+  }, { include: [ Product ] });
+};
+
+let createUsers = (genre) => {
+  return User.create({
+    name: 'Bub',
+    email: 'bub@sie.com',
+    password: '12345'
+  });
+};
+
+db.didSync = sync();
+
+
+
+// user
+  // cart
+      // cart_product
+        // product (*)
+
+// user
+  // order
+    // order_product (*) - includes price
+      // product (*) - from user's cart
+  // cart
+    // cart_product - empty after products ordered

@@ -7,7 +7,7 @@ var Product = db.define('products', {
         allowNull: false
     },
     price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
         allowNull: false
     },
     description: {

@@ -4,8 +4,6 @@ var Promise = require('bluebird');
 const db = require('APP/db');
 
 var Order = db.define('orders', {
-    productIDs: Sequelize.ARRAY(Sequelize.INTEGER),
-    priceAtPurchase: Sequelize.ARRAY(Sequelize.INTEGER),
     shippingAddress: {
         type: Sequelize.STRING
     }

@@ -10,9 +10,21 @@ const Genre = require('./genre');
 const Order = require('./order');
 const Product = require('./product');
 const Review = require('./review');
+const OrderProduct = require('./order-product');
+const Cart = require('./cart');
+const CartProduct = require('./cart-product');
+
+//currently defining the through tables explicitly and not using a through table shortcut
+//maybe we could clean up later and use the syntax for a through table?
 
 User.hasMany(Order);
 Genre.hasMany(Product);
 Product.hasMany(Review);
+Product.hasMany(OrderProduct);
+Order.hasMany(OrderProduct);
+Product.hasMany(CartProduct);
+Cart.hasMany(CartProduct);
+User.hasOne(Cart);
+
 
 module.exports = db;
