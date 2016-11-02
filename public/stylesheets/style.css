@@ -45,7 +45,7 @@ body {
 }
 
 .footer {
-  position: relative;
+  position: fixed;
   text-align: center;
   padding:5px;
   bottom: 0;
@@ -58,4 +58,8 @@ body {
 
 .text-muted {
     margin: 15px 0;
+}
+
+.col-md-3 .thumbnail {
+    height: 450px;
 }
