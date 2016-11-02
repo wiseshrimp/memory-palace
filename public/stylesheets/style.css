@@ -45,7 +45,7 @@ body {
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   text-align: center;
   padding:5px;
   bottom: 0;

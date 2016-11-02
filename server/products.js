@@ -3,11 +3,11 @@
 const epilogue = require('./epilogue')
 const db = require('APP/db')
 
-const customMemoryRoutes = require('express').Router() 
+const customProductRoutes = require('express').Router() 
 
 // Custom routes go here.
 
-module.exports = customMemoryRoutes
+module.exports = customProductRoutes
 
 // Epilogue will automatically create standard RESTful routes
 const products = epilogue.resource({
