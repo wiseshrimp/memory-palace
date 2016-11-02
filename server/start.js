@@ -36,12 +36,14 @@ module.exports = app
   
   // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'public')))
-
+  .use('/bootstrap', express.static(resolve(__dirname, '..', 'node_modules', 'bootstrap', 'dist')))
+  .use('/jquery', express.static(resolve(__dirname, '..', 'node_modules', 'jquery', 'dist')))
+  
   // Serve our api
   .use('/api', require('./api'))
 
   // Send index.html for anything else.
-  .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
+  .get('/', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
 
 if (module === require.main) {
   // Start listening only if we're the main module.
