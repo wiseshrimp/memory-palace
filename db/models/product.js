@@ -20,6 +20,9 @@ var Product = db.define('products', {
     imageUrl: {
         type: Sequelize.STRING,
         defaultValue: 'product-images/default.jpg'
+    },
+    genre: {
+        type: Sequelize.ENUM("romance", "horror", "feel-good")
     }
 });
 

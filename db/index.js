@@ -26,17 +26,19 @@ const db = module.exports = new Sequelize(url, {
 // pull in our models
 require('./models');
 const User = require('./models/user');
-const Genre = require('./models/genre');
 const Product = require('./models/product');
 const Review = require('./models/review');
 const Order = require('./models/order');
 const Cart = require('./models/cart');
+const seed = require('./../seed')
 
 // sync the db, creating it if necessary
 function sync(force=app.isTesting) {
   return db.sync({ force: true })
-    .then(createProducts)
-    .then(createUsers)  
+    .then(function(){ 
+      console.log("Made into seed function thingy")
+      return seed();
+    })
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       console.log(fail);
@@ -52,44 +54,6 @@ function sync(force=app.isTesting) {
     })
 }
 
-let createProducts = () => {
-  return Genre.create({
-    name: 'Romantic',
-    products: [
-      {
-        title: 'My wedding day in paraiso',
-        price: 67.60,
-        description: 'The happiest day of your life'
-      },
-      {
-        title: 'My first kiss',
-        price: 3.33,
-        description: 'With Matt Parkin'
-      }
-    ]
-  }, { include: [ Product ] });
-};
-
-let createUsers = (genre) => {
-  return User.create({
-    name: 'Bub',
-    email: 'bub@sie.com',
-    password: '12345'
-  });
-};
-
 db.didSync = sync();
 
 
-
-// user
-  // cart
-      // cart_product
-        // product (*)
-
-// user
-  // order
-    // order_product (*) - includes price
-      // product (*) - from user's cart
-  // cart
-    // cart_product - empty after products ordered
