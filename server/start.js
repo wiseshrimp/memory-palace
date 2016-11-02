@@ -38,7 +38,9 @@ module.exports = app
   .use(express.static(resolve(__dirname, '..', 'public')))
   .use('/bootstrap', express.static(resolve(__dirname, '..', 'node_modules', 'bootstrap', 'dist')))
   .use('/jquery', express.static(resolve(__dirname, '..', 'node_modules', 'jquery', 'dist')))
-  
+  .use('/font-awesome', express.static(resolve(__dirname, '..', 'node_modules', 'font-awesome')))
+
+
   // Serve our api
   .use('/api', require('./api'))
 
