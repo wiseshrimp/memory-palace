@@ -9,15 +9,21 @@ import store from './store';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Root from './components/Root';
-import Cart from './components/Cart';
+import Cart from './containers/Cart';
 import Home from './components/Home';
+
+import { loadCart } from './actions/cart-actions';
+
+function onEnterUserCart(nextState) {
+  store.dispatch(loadCart(nextState.params.userId))
+}
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={Root}>
         <IndexRoute component={Home} />
-        <Route path='/cart' component={Cart} />
+        <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
       </Route>
     </Router>  
   </Provider>,

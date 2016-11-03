@@ -1,11 +1,26 @@
-import { combineReducers } from 'redux'
+import React from 'react';
+import { combineReducers } from 'redux';
 
-const initialState = {}
+import { RECEIVE_USER_CART } from '../actions/cart-actions';
 
-const rootReducer = function(state = initialState, action) {
-  switch(action.type) {
-    default: return state
+const initialState = {};
+
+const cartReducer = function (state = {}, action) {
+  switch (action.type) {
+    case RECEIVE_USER_CART:
+      return action.payload;
+    default: return state;
   }
-};
+}
 
-export default rootReducer
+const rootReducer = combineReducers({
+  cart: cartReducer
+})
+
+// const rootReducer = function(state = initialState, action) {
+//   switch(action.type) {
+//     default: return state
+//   }
+// };
+
+export default rootReducer;
