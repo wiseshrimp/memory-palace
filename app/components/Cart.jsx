@@ -1,5 +1,12 @@
 'use strict'
 
+/*
+    TO DO:
+        1). Update quantity of products: Make helper function to loop through products and count duplicates
+        2). Rendering more than one item --- Test?
+*/
+
+
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -46,11 +53,10 @@ export default class Cart extends React.Component {
                                                     <span className="glyphicon glyphicon-remove"></span> Remove
                                         </button></td>
                                         </tr>
-                                    )
-                                })
+                                        )
+                                    })
                                 }    
 
-                                
                                     <tr>
                                         <td>   </td>
                                         <td>   </td>
