@@ -9,7 +9,7 @@ export default class Root extends Component {
         return (
             <div>
                 <Navbar />
-                <Product />
+                <Home />
                 <Footer />
             </div>
         )
