@@ -23,10 +23,10 @@ export default class Product extends React.Component {
                 <div className="product-genre">Product Genre</div>
       					<div className="product-stock">In Stock</div>
                 <div className="list-group list-group-horizontal">
-                    <a href="#" class="list-group-item active">Keyword One, </a>
-                    <a href="#" class="list-group-item">Keyword Two, </a>
-                    <a href="#" class="list-group-item">Keyword Three, </a>
-                    <a href="#" class="list-group-item">Keyword Four</a>
+                    <a href="#" className="list-group-item active">Keyword One, </a>
+                    <a href="#" className="list-group-item">Keyword Two, </a>
+                    <a href="#" className="list-group-item">Keyword Three, </a>
+                    <a href="#" className="list-group-item">Keyword Four</a>
                 </div>
       					<hr />
       					<div className="btn-group cart">
