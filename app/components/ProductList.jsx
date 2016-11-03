@@ -17,8 +17,8 @@ export default class ProductList extends React.Component {
         return (
             <div className="row">
                 {this.state.products.map(product => (
-                    <div className="col-sm-6 col-md-3">
-                        <div className="thumbnail" key={product.id}>
+                    <div key={product.id} className="col-sm-6 col-md-3">
+                        <div className="thumbnail">
                             <img src={ product.imageUrl} />
                             <div className="caption">
                                 <h3>{product.title}</h3>

@@ -63,3 +63,8 @@ body {
 .col-md-3 .thumbnail {
     height: 450px;
 }
+
+.media-object {
+    width: 72px;
+    height: 72px;
+}
