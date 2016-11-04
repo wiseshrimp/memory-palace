@@ -61,6 +61,7 @@ var randTitle = () => {
   .slice(0, -1);
 }
 
+// CAN USE FOR LOGIN TEST:
 //generate random user instances
 var generateUsers = () => {
   var users = doTimes(numUsers, randUser);

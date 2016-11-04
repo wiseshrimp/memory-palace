@@ -47,7 +47,7 @@ export default class Login extends React.Component {
                                 <div className="col-lg-12">
                                     <form id="login-form" action="#" method="post" role="form">
                                         <div className="form-group">
-                                            <input type="text" name="username" id="username" tabindex="1" className="form-control" placeholder="Username" value="" />
+                                            <input type="text" name="username" id="username" tabindex="1" className="form-control" placeholder="Username" />
                                         </div>
                                         <div className="form-group">
                                             <input type="password" name="password" id="password" tabindex="2" className="form-control" placeholder="Password" />
@@ -71,10 +71,10 @@ export default class Login extends React.Component {
                                     </form>
                                     <form id="register-form" action="#" method="post" role="form">
                                         <div className="form-group">
-                                            <input type="text" name="username" id="username" tabindex="1" className="form-control" placeholder="Username" value="" />
+                                            <input type="text" name="username" id="username" tabindex="1" className="form-control" placeholder="Username" />
                                         </div>
                                         <div className="form-group">
-                                            <input type="email" name="email" id="email" tabindex="1" className="form-control" placeholder="Email Address" value="" />
+                                            <input type="email" name="email" id="email" tabindex="1" className="form-control" placeholder="Email Address" />
                                         </div>
                                         <div className="form-group">
                                             <input type="password" name="password" id="password" tabindex="2" className="form-control" placeholder="Password" />
