@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Root from './components/Root';
 import Cart from './containers/Cart';
 import Home from './components/Home';
+import Login from './components/Login';
 
 import { loadCart } from './actions/cart-actions';
 
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route path="/" component={Root}>
         <IndexRoute component={Home} />
         <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
+        <Route path='/login' component={Login} />
       </Route>
     </Router>  
   </Provider>,

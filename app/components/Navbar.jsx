@@ -49,7 +49,7 @@ export default class Navbar extends React.Component {
                     <SearchBar />
                     <li><a href="#"><span className="glyphicon glyphicon-shopping-cart"></span></a></li>                    
                     <li><a href="#"><span className="glyphicon glyphicon-user"></span></a></li>
-                    <li><a href="#"><span className="glyphicon glyphicon-log-in"></span></a></li>
+                    <li><Link to="/login" activeClassName="active"><span className="glyphicon glyphicon-log-in"></span></Link></li>
                 </ul>
             </div>
             </div>
