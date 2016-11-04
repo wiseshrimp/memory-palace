@@ -1,7 +1,8 @@
 'use strict'
 
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+import SearchBar from './SearchBar';
 
 export default class Navbar extends React.Component {
     constructor(props) {
@@ -45,16 +46,7 @@ export default class Navbar extends React.Component {
                 </ul>
                 
                 <ul className="nav navbar-nav navbar-right">
-                    <li>
-                        <form className="navbar-form" role="search">
-                            <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" />
-                                <div className="input-group-btn">
-                                    <button className="btn btn-default" type="submit"><i className="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </li>
+                    <SearchBar />
                     <li><a href="#"><span className="glyphicon glyphicon-shopping-cart"></span></a></li>                    
                     <li><a href="#"><span className="glyphicon glyphicon-user"></span></a></li>
                     <li><a href="#"><span className="glyphicon glyphicon-log-in"></span></a></li>
