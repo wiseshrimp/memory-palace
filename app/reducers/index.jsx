@@ -2,8 +2,13 @@ import React from 'react';
 import { combineReducers } from 'redux';
 
 import { RECEIVE_USER_CART } from '../actions/cart-actions';
+import { LOAD_PRODUCTS } from '../actions/home-actions';
 
-const initialState = {};
+
+const initialState = {
+  cart: {},
+  products: []
+};
 
 const cartReducer = function (state = {}, action) {
   switch (action.type) {
@@ -13,14 +18,18 @@ const cartReducer = function (state = {}, action) {
   }
 }
 
+const productListReducer = function (state = [], action) {
+  switch (action.type) {
+    case LOAD_PRODUCTS:
+      return action.payload;
+    default: return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  cart: cartReducer
+  cart: cartReducer,
+  products: productListReducer
 })
 
-// const rootReducer = function(state = initialState, action) {
-//   switch(action.type) {
-//     default: return state
-//   }
-// };
 
 export default rootReducer;

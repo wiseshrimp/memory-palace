@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import Cart from '../components/Cart';
+import ProductList from '../components/ProductList';
 
 function mapStateToProps(state) {
     return {
-        cart: state.cart
+        products: state.products
     }
 }
 
+
 export default connect(
     mapStateToProps
-)(Cart);
+)(ProductList);

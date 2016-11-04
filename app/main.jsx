@@ -13,19 +13,25 @@ import Cart from './containers/Cart';
 import Home from './components/Home';
 
 import { loadCart } from './actions/cart-actions';
+import { loadProducts } from './actions/home-actions';
+
 
 function onEnterUserCart(nextState) {
   store.dispatch(loadCart(nextState.params.userId))
 }
+function onEnterHome() {
+  store.dispatch(loadProducts())
+}
+
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={Root}>
-        <IndexRoute component={Home} />
+        <IndexRoute component={Home} onEnter={onEnterHome} />
         <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
       </Route>
-    </Router>  
+    </Router>
   </Provider>,
   document.getElementById('main')
 )
