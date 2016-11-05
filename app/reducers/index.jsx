@@ -3,6 +3,13 @@ import { combineReducers } from 'redux';
 
 import { RECEIVE_USER_CART } from '../actions/cart-actions';
 import { SEARCHBAR_REQUEST } from '../actions/searchbar-actions';
+import { LOAD_PRODUCTS } from '../actions/home-actions';
+
+
+const initialState = {
+  cart: {},
+  products: []
+};
 
 const cartReducer = function (state = {}, action) {
   switch (action.type) {
@@ -12,8 +19,10 @@ const cartReducer = function (state = {}, action) {
   }
 }
 
-const searchbarReducer = function (state = [], action) {
+const productListReducer = function (state = [], action) {
   switch (action.type) {
+    case LOAD_PRODUCTS:
+      return action.payload;
     case SEARCHBAR_REQUEST:
       return action.payload;
     default: return state;
@@ -22,7 +31,7 @@ const searchbarReducer = function (state = [], action) {
 
 const rootReducer = combineReducers({
   cart: cartReducer,
-  products: searchbarReducer
+  products: productListReducer
 })
 
 export default rootReducer;

@@ -16,25 +16,31 @@ import SearchedItemList from './containers/SearchedItemList';
 
 import { loadCart } from './actions/cart-actions';
 import { fetchSearchRequest } from './actions/searchbar-actions';
+import { loadProducts } from './actions/home-actions';
+
 
 function onEnterUserCart(nextState) {
   store.dispatch(loadCart(nextState.params.userId))
 }
 
+function onEnterHome() {
+  store.dispatch(loadProducts())
+}
+
 function onEnterSearchBar(nextState) {
-  store.dispatch(fetchSearchRequest(nextState.params.term));  
+  store.dispatch(fetchSearchRequest(nextState.params.term));
 }
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={Root}>
-        <IndexRoute component={Home} />
+        <IndexRoute component={Home} onEnter={onEnterHome} />
         <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
         <Route path='/login' component={Login} />
         <Route path='/search/:term' component={SearchedItemList} onEnter={onEnterSearchBar} />
       </Route>
-    </Router>  
+    </Router>
   </Provider>,
   document.getElementById('main')
 )
