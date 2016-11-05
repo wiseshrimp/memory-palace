@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Root from './components/Root';
 import Cart from './containers/Cart';
+import ProductContainer from './containers/Product';
 import Home from './components/Home';
 import Login from './components/Login';
 import SearchedItemList from './containers/SearchedItemList';
@@ -17,6 +18,7 @@ import SearchedItemList from './containers/SearchedItemList';
 import { loadCart } from './actions/cart-actions';
 import { fetchSearchRequest } from './actions/searchbar-actions';
 import { loadProducts } from './actions/home-actions';
+import { loadProduct } from './actions/product-actions';
 
 
 function onEnterUserCart(nextState) {
@@ -31,6 +33,10 @@ function onEnterSearchBar(nextState) {
   store.dispatch(fetchSearchRequest(nextState.params.term));
 }
 
+function onEnterLoadProduct(nextState) {
+  store.dispatch(loadProduct(nextState.params.productId))
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
@@ -39,6 +45,7 @@ ReactDOM.render(
         <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
         <Route path='/login' component={Login} />
         <Route path='/search/:term' component={SearchedItemList} onEnter={onEnterSearchBar} />
+        <Route path='/products/:productId' component={ProductContainer} onEnter={onEnterLoadProduct} />
       </Route>
     </Router>
   </Provider>,
