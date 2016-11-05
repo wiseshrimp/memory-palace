@@ -14,8 +14,8 @@ var Review = require('./db/models/review');
 var OrderProduct = require('./db/models/order_product')
 
 //setting number of instances for each model
-var numUsers = 100;
-var numCarts = 102;
+var numUsers = 30;
+var numCarts = 32;
 var numProducts = 10;
 var numReviews = 20;
 var numOrders = 30;
@@ -36,7 +36,6 @@ var randGenre =() => {
   var genres = ["romance", "horror", "feel-good"];
   return chance.pick(genres);
 }
-
 
 //generate random user info
 var randUser = () =>  {
@@ -113,7 +112,13 @@ var generateOrders = (users) => {
   	var user = chance.pick(users);
   	var orderReference;
   	return Order.create({
-  		shippingAddress: chance.address()
+  		shippingName: chance.name(),
+      shippingLine1: chance.address(),
+      shippingLine2: "Apt 2",
+      shippingCity: chance.city(),
+      shippingState: chance.state(),
+      shippingZip: chance.zip(),
+      shippingTotal: 6.95
   	})
   	.then(createdOrder => {
   		return Promise.all([createdOrder.setUser(user), createdOrder])
@@ -136,7 +141,8 @@ var generateOrders = (users) => {
   	})
   	.then(foundProduct => {
   		 orderReference.update({
-  			price: foundProduct.price
+  			price: foundProduct.price,
+        quantity: chance.integer({min: 1, max: 10})
   		})
   	})	
  })
@@ -148,12 +154,8 @@ var generateOrders = (users) => {
 var generateCart = () => {
 	return doTimes(numCarts, function(){
 		return Cart.create({})
-		.then(builtCart => {
-			return Promise.all([builtCart.setUser(builtCart.id), builtCart])
-		})
-		.spread((builtCartUser, builtCart) => {
-			return builtCart.setProducts( chance.integer( {min: 1, max: 10} ) )
-		})
+		.then(builtCart => Promise.all([builtCart.setUser(builtCart.id), builtCart]) )
+		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 10} ) ) )
 	})
 }
 
@@ -169,18 +171,10 @@ var createUsers = () => {
 //creates the dummy data to  be synced 
 var seed = () =>  {
   return createUsers()
-  .then(function (createdUsers) {
-       return generateOrders(createdUsers);
-  })
-  .then(() => {
-  	return generateCart();
-  })
-  .then(() => {
-	return generateProducts()
-  })
-  .then(generatedProducts => {
-  	return generateReviews()
-  })
+  .then(generateOrders)
+  .then(generateCart)
+  .then(generateProducts)
+  .then(generateReviews)
   .catch(err => console.error(err))
 }
 

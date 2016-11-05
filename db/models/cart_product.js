@@ -2,13 +2,10 @@ const Sequelize = require('sequelize');
 var Promise = require('bluebird');
 const db = require('APP/db');
 
-var OrderProduct = db.define('order_product', {
-	price: {
-		type: Sequelize.DECIMAL
-	},
+var CartProduct = db.define('cart_product', {
 	quantity: {
 		type: Sequelize.INTEGER
 	}
 });
 
-module.exports = OrderProduct;
+module.exports = CartProduct;

@@ -70,3 +70,30 @@ body {
     width: 72px;
     height: 72px;
 }
+
+.table-responsive{
+  margin-top:25px;
+}
+
+.order-history-box{
+  border: 1px #ddd solid;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.order-history-heading{
+  border: 1px #ddd solid;
+  background-color: #f6f6f6!important;
+  margin: -1px;
+  padding-top: 10px;
+  border-radius: 10px 10px 0 0;
+
+}
+
+.product-icon{
+  margin: 5px;
+}
+
+
+
