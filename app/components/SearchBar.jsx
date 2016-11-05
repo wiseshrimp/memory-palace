@@ -33,7 +33,7 @@ export default class SearchBar extends React.Component {
                 <div className="input-group">
                   <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
                   <div className="input-group-btn">
-                    <Link to={`search/${this.state.currentTerm}`}>
+                    <Link to={this.state.currentTerm ? `search/${this.state.currentTerm}` : '/'}>
                       <button className="btn btn-default" type="submit">
                         <i className="glyphicon glyphicon-search" />
                       </button>
