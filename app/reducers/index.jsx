@@ -9,7 +9,8 @@ import { RECEIVE_PRODUCT } from '../actions/product-actions';
 
 const initialState = {
   cart: {},
-  products: []
+  products: [],
+  product: {}
 };
 
 const cartReducer = function (state = {}, action) {
