@@ -3,7 +3,7 @@ import React from 'react';
 export default class SearchedItemList extends React.Component {
     render() {
         const {products, routeParams} = this.props;
-        if (products) {
+        if (products.length !== 0) {
             return (
                 <div className="row">
                     <h4>{products.length} results for {routeParams.term}</h4>
