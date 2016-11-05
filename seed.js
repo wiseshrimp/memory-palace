@@ -13,7 +13,7 @@ var Order = require('./db/models/order');
 var Review = require('./db/models/review');
 var OrderProduct = require('./db/models/order_product')
 
-//setting number of instances for each model
+//setting number of instances for each model 
 var numUsers = 30;
 var numCarts = 32;
 var numProducts = 10;
