@@ -1,29 +1,12 @@
 'use strict'
 
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Login extends React.Component {
-    componentWillMount() {
-        
-        // To trigger the Login/Register toggle
-        $(function() {
-
-            $('#login-form-link').click(function(e) {
-                $("#login-form").delay(100).fadeIn(100);
-                $("#register-form").fadeOut(100);
-                $('#register-form-link').removeClass('active');
-                $(this).addClass('active');
-                e.preventDefault();
-            });
-            $('#register-form-link').click(function(e) {
-                $("#register-form").delay(100).fadeIn(100);
-                $("#login-form").fadeOut(100);
-                $('#login-form-link').removeClass('active');
-                $(this).addClass('active');
-                e.preventDefault();
-            });
-
-        });
+    constructor(props) {
+        super(props);
+        this.onLoginSubmit = this.onLoginSubmit.bind(this);
     }
 
     checkPasswordMatch() {
@@ -32,7 +15,16 @@ export default class Login extends React.Component {
 
         if (password != confirmPassword)
             $("#password_message").html("Passwords do not match!");
+    }
+
+    onLoginSubmit(event) {
+        const userCred = {
+            email: event.target.email.value,
+            password: event.target.password.value
         }
+        event.preventDefault();
+        this.props.login(userCred);
+    }
 
     render() {
         return (
@@ -48,15 +40,16 @@ export default class Login extends React.Component {
                                     <div className="col-xs-6">
                                         <a href="#" id="register-form-link">Register</a>
                                     </div>
+                                    <button onClick={this.props.logout}>Logout</button>
                                 </div>
                             </div>
                         </div>
                         <div className="panel-body">
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <form id="login-form" action="#" method="post" role="form">
+                                    <form id="login-form" action="#" method="post" role="form" onSubmit={this.onLoginSubmit}>
                                         <div className="form-group">
-                                            <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Email Address" />
+                                            <input type="text" name="email" id="email" tabIndex="1" className="form-control" placeholder="Email Address" />
                                         </div>
                                         <div className="form-group">
                                             <input type="password" name="password" id="password" tabIndex="2" className="form-control" placeholder="Password" />

@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import Root from './components/Root';
 import Cart from './containers/Cart';
 import Home from './components/Home';
-import Login from './components/Login';
+import Login from './containers/Login';
 import SearchedItemList from './containers/SearchedItemList';
 
 import { loadCart } from './actions/cart-actions';

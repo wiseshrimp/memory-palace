@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class ProductList extends React.Component {
     render() {
-      const {products} = this.props;
+        const {products} = this.props;
       return (
           <div className="row">
               {products && products.map(product => (

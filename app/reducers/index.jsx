@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import { RECEIVE_USER_CART } from '../actions/cart-actions';
 import { SEARCHBAR_REQUEST } from '../actions/searchbar-actions';
 import { LOAD_PRODUCTS } from '../actions/home-actions';
+import { LOGIN_USER, LOGOUT_USER } from '../actions/login-actions';
 
 
 const initialState = {
@@ -29,9 +30,20 @@ const productListReducer = function (state = [], action) {
   }
 }
 
+const loginReducer = function (state = {}, action) {
+  switch (action.type) {
+    case LOGIN_USER:
+      return action.payload;
+    case LOGOUT_USER:
+      return action.payload;
+    default: return state;
+  }
+}
+
 const rootReducer = combineReducers({
   cart: cartReducer,
-  products: productListReducer
+  products: productListReducer,
+  loginUser: loginReducer
 })
 
 export default rootReducer;
