@@ -1,15 +1,14 @@
 'use strict'
 
 import React from 'react';
-import Router from 'react-router';
+import { Link } from 'react-router';
 
 export default class SearchBar extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state = {
             currentTerm: ''
         }
-        this.context = context;
         this.onInputChange = this.onInputChange.bind(this);
         this.onSearchSubmit = this.onSearchSubmit.bind(this);
     }
@@ -22,9 +21,6 @@ export default class SearchBar extends React.Component {
 
     onSearchSubmit(e) {
         e.preventDefault();
-        this.context.router.push({
-            pathname: `search/${this.state.currentTerm}`
-        })
     }
 
     render() {
@@ -37,10 +33,11 @@ export default class SearchBar extends React.Component {
                         <div className="input-group">
                         <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
                             <div className="input-group-btn">
-                            <button className="btn btn-default" type="submit">
-                                <i className="glyphicon glyphicon-search">
-                                </i>
+                            <Link to={`search/${this.state.currentTerm}`}>
+                                <button className="btn btn-default" type="submit">
+                                    <i className="glyphicon glyphicon-search" />
                             </button>
+                            </Link>
                             </div>
                         </div>
                     </form>
