@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import SearchedItemList from '../components/SearchedItemList';
 import { fetchSearchRequest } from '../actions/searchbar-actions';
 
-
 function mapStateToProps(state) {
     return {
         products: state.products

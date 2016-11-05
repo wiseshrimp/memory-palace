@@ -31,13 +31,19 @@ export default class SearchBar extends React.Component {
                     role="search"
                     onSubmit={this.onSearchSubmit}>
                         <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search"
+                            name="srch-term"
+                            id="srch-term"
+                            onChange={this.onInputChange} />
                             <div className="input-group-btn">
-                            <Link to={`search/${this.state.currentTerm}`}>
-                                <button className="btn btn-default" type="submit">
-                                    <i className="glyphicon glyphicon-search" />
-                            </button>
-                            </Link>
+                                <Link to={`search/${this.state.currentTerm}`}>
+                                    <button className="btn btn-default" type="submit">
+                                        <i className="glyphicon glyphicon-search" />
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </form>
@@ -45,7 +51,3 @@ export default class SearchBar extends React.Component {
         )
     }
 }
-
-SearchBar.contextTypes = {
-  router: React.PropTypes.object.isRequired
-};
