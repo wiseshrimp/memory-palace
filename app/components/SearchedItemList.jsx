@@ -2,11 +2,11 @@ import React from 'react';
 
 export default class SearchedItemList extends React.Component {
     render() {
-        console.log(this.props);
-        if (this.props.products) {
+        const {products} = this.props;
+        if (products.length !== 0) {
             return (
                 <div className="row">
-                    {this.props.products.map(product => (
+                    {products.map(product => (
                         <div key={product.id} className="col-sm-6 col-md-3">
                             <div className="thumbnail">
                                 <img src={ product.imageUrl} />
@@ -17,9 +17,9 @@ export default class SearchedItemList extends React.Component {
                             </div>
                         </div>
                         ))
-                    } 
+                    }
                 </div>
-            )   
+            )
         }
         else {
             return (

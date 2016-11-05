@@ -29,22 +29,22 @@ export default class SearchBar extends React.Component {
 
     render() {
         return (
-                <li>
-                <form
-                    className="navbar-form"
-                    role="search"
-                    onSubmit={this.onSearchSubmit}>
-                        <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
-                            <div className="input-group-btn">
-                            <button className="btn btn-default" type="submit">
-                                <i className="glyphicon glyphicon-search">
-                                </i>
-                            </button>
-                            </div>
-                        </div>
-                    </form>
-                </li>
+            <li>
+              <form
+                className="navbar-form"
+                role="search"
+                onSubmit={this.onSearchSubmit}>
+                    <div className="input-group">
+                      <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
+                      <div className="input-group-btn">
+                        <button className="btn btn-default" type="submit">
+                            <i className="glyphicon glyphicon-search">
+                            </i>
+                        </button>
+                      </div>
+                    </div>
+                </form>
+            </li>
         )
     }
 }
