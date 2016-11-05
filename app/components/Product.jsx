@@ -1,4 +1,8 @@
 import React from 'react';
+import StarRating from 'react-star-rating';
+
+// TO DO: add user association to reviews so that name of reviewer can show up next to reviews
+// add integration of averageRating
 
 export default class Product extends React.Component {
   render() {
@@ -6,7 +10,20 @@ export default class Product extends React.Component {
     const productImage = {
         backgroundImage: 'url(/product-images/default.jpg)',
     }
+    const starRating = {
+        width: '52%'
+    }
     const { product } = this.props;
+
+    // find and set average of product reviews once state has updated
+    let averageRating = 0;
+    if (product.reviews){
+      for (var i = 0; i < product.reviews.length; i++){
+        averageRating += product.reviews[i].rating
+      }
+      averageRating /= product.reviews.length;
+    }
+
     if (product) {
       return (
         <div className="container-fluid">
@@ -25,8 +42,8 @@ export default class Product extends React.Component {
                   <div className="product-genre">{product.genre}</div>
         					<div className="product-stock">In Stock</div>
                   <div className="list-group list-group-horizontal">
-                  {product.keywords && product.keywords.map(product => {
-                      <a href="#" >{product.keywords}, </a>
+                  {product.keywords && product.keywords.map(keywords => {
+                      <a href="#" >{keywords}, </a>
                       {/* <a href="#" >Keyword Two, </a>
                       <a href="#" >Keyword Three, </a>
                       <a href="#" >Keyword Four</a> */}
@@ -60,7 +77,10 @@ export default class Product extends React.Component {
 
         						</div>
           					<div className="tab-pane fade" id="service-three">
-                        <p>THIS IS A REVIEW??</p>
+                    {product.reviews && product.reviews.map(review =>
+                      <div key={review.id}>Rating: {review.rating}
+                      <p>{review.text}</p></div>
+                    )}
           					</div>
         				</div>
         				<hr />

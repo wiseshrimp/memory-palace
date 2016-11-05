@@ -13,7 +13,6 @@ export default class Root extends Component {
                 {
                     this.props.children
                 }
-                {/* <ProductContainer /> */}
                 <Footer />
             </div>
         )

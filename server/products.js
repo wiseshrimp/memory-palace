@@ -3,7 +3,7 @@
 const epilogue = require('./epilogue')
 const db = require('APP/db')
 
-const customProductRoutes = require('express').Router() 
+const customProductRoutes = require('express').Router()
 
 // Custom routes go here.
 
@@ -12,5 +12,10 @@ module.exports = customProductRoutes
 // Epilogue will automatically create standard RESTful routes
 const products = epilogue.resource({
   model: db.model('products'),
-  endpoints: ['/products', '/products/:id']
+  endpoints: ['/products', '/products/:id'],
+  include: [
+    {
+      model: db.model('reviews')
+    }
+  ]
 })

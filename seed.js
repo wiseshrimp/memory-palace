@@ -1,6 +1,6 @@
 'use strict';
 
-//utilizing chance library to generate random information 
+//utilizing chance library to generate random information
 
 var Chance = require('chance');
 var chance = new Chance();
@@ -48,7 +48,7 @@ var randUser = () =>  {
   });
 }
 
-//generate random titles 
+//generate random titles
 var randTitle = () => {
   var numWords = chance.natural({
     min: 1,
@@ -138,11 +138,11 @@ var generateOrders = (users) => {
   		 orderReference.update({
   			price: foundProduct.price
   		})
-  	})	
+  	})
  })
 }
 
-//generate random cart instances 
+//generate random cart instances
 // sets products using belongsToMany through table (cart_product)
 //sets user using Cart.belongsToUser
 var generateCart = () => {
@@ -166,7 +166,7 @@ var createUsers = () => {
 
 
 //called by db.sync (on model/index.js)
-//creates the dummy data to  be synced 
+//creates the dummy data to  be synced
 var seed = () =>  {
   return createUsers()
   .then(function (createdUsers) {
@@ -184,5 +184,4 @@ var seed = () =>  {
   .catch(err => console.error(err))
 }
 
-module.exports = seed; 
-
+module.exports = seed;
