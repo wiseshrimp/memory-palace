@@ -24,6 +24,13 @@ var Product = db.define('products', {
     genre: {
         type: Sequelize.ENUM("romance", "horror", "feel-good")
     }
+},
+{
+    instanceMethods: {
+        test: function () {
+            console.log('hello')
+        }
+    }
 });
 
 module.exports = Product;

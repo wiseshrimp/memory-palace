@@ -4,6 +4,7 @@ import React from 'react';
 
 export default class Login extends React.Component {
     componentWillMount() {
+        
         // To trigger the Login/Register toggle
         $(function() {
 

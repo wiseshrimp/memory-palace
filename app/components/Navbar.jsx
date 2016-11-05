@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import SearchBar from './SearchBar';
+import SearchBar from '../components/SearchBar';
 
 export default class Navbar extends React.Component {
     constructor(props) {
@@ -47,7 +47,7 @@ export default class Navbar extends React.Component {
                 
                 <ul className="nav navbar-nav navbar-right">
                     <SearchBar />
-                    <li><a href="#"><span className="glyphicon glyphicon-shopping-cart"></span></a></li>                    
+                    <li><Link to="/cart/1"><span className="glyphicon glyphicon-shopping-cart"></span></Link></li>                    
                     <li><a href="#"><span className="glyphicon glyphicon-user"></span></a></li>
                     <li><Link to="/login" activeClassName="active"><span className="glyphicon glyphicon-log-in"></span></Link></li>
                 </ul>

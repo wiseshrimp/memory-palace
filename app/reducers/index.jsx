@@ -2,6 +2,7 @@ import React from 'react';
 import { combineReducers } from 'redux';
 
 import { RECEIVE_USER_CART } from '../actions/cart-actions';
+import { SEARCHBAR_REQUEST } from '../actions/searchbar-actions';
 
 const initialState = {};
 
@@ -13,14 +14,17 @@ const cartReducer = function (state = {}, action) {
   }
 }
 
-const rootReducer = combineReducers({
-  cart: cartReducer
-})
+const searchbarReducer = function (state = [], action) {
+  switch (action.type) {
+    case SEARCHBAR_REQUEST:
+      return action.payload;
+    default: return state;
+  }
+}
 
-// const rootReducer = function(state = initialState, action) {
-//   switch(action.type) {
-//     default: return state
-//   }
-// };
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  products: searchbarReducer
+})
 
 export default rootReducer;
