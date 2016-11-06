@@ -47,7 +47,11 @@ function onEnterOrderHistory(nextState) {
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={Root}>
+      <Route path="/" onChange={(prevState, nextState) => {
+          if (nextState.location.action !== "POP") {
+            window.scrollTo(0, 0);
+          }
+        }} component={Root}>
         <IndexRoute component={Home} onEnter={onEnterHome} />
         <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
         <Route path='/login' component={Login} />
