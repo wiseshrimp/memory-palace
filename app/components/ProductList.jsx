@@ -2,7 +2,17 @@ import React from 'react';
 
 export default class ProductList extends React.Component {
     render() {
-      const {products} = this.props;
+
+      const products = this.props.products.sort((a,b) => {
+        if (a.count < b.count) {
+          return 1;
+        }
+        if (a.count > b.count) {
+          return -1;
+        }
+        return 0;
+      });
+
       return (
           <div className="row">
               {products && products.map(product => (

@@ -23,4 +23,5 @@ Cart.belongsToMany(Product, {through: CartProduct});
 Cart.belongsTo(User);
 
 
+
 module.exports = db;
