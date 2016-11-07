@@ -3,6 +3,7 @@ import Navbar from '../containers/Navbar';
 import Footer from './Footer';
 import Home from './Home';
 import Product from './Product';
+import ProductContainer from '../containers/Product';
 
 export default class Root extends Component {
     render() {

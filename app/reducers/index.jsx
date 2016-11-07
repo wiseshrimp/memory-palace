@@ -5,11 +5,15 @@ import { RECEIVE_USER_CART } from '../actions/cart-actions';
 import { SEARCHBAR_REQUEST } from '../actions/searchbar-actions';
 import { LOAD_PRODUCTS } from '../actions/home-actions';
 import { LOGIN_USER, LOGOUT_USER } from '../actions/login-actions';
+import { RECEIVE_PRODUCT } from '../actions/product-actions';
+import { RECEIVE_USER_ORDER_HISTORY } from '../actions/orderhistory-actions';
 
 
 const initialState = {
   cart: {},
-  products: []
+  products: [],
+  product: {},
+  orderHistory: []
 };
 
 const cartReducer = function (state = {}, action) {
@@ -35,6 +39,17 @@ const loginReducer = function (state = {}, action) {
     case LOGIN_USER:
       return action.payload;
     case LOGOUT_USER:
+const productReducer = function (state = {}, action) {
+  switch (action.type) {
+    case RECEIVE_PRODUCT:
+      return action.payload;
+    default: return state;
+  }
+}
+
+const orderHistoryReducer = function (state = [], action) {
+  switch (action.type) {
+    case RECEIVE_USER_ORDER_HISTORY:
       return action.payload;
     default: return state;
   }
@@ -45,5 +60,11 @@ const rootReducer = combineReducers({
   products: productListReducer,
   loginUser: loginReducer
 })
+  product: productReducer,
+  orderHistory: orderHistoryReducer
+});
+
+
+
 
 export default rootReducer;

@@ -11,6 +11,7 @@ api
   .use('/cart', require('./cart'))
   .use('/mostPopular', require('./mostPopular'))
   .use('/login', require('./login'))
+  .use('/orderhistory', require('./order-history'))
 
 // Send along any errors
 api.use((err, req, res, next) => {

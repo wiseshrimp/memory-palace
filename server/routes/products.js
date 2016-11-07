@@ -3,7 +3,7 @@
 const epilogue = require('./epilogue')
 const db = require('APP/db')
 
-const customProductRoutes = require('express').Router() 
+const customProductRoutes = require('express').Router()
 
 // Custom routes go here.
 
@@ -17,5 +17,10 @@ const products = epilogue.resource({
     param: 'searchAllProducts', // will be string
     attributes: ['title', 'description', 'keywords'], // array of strings that corresponds to the column names in products database
     operator: '$iLike'
-  }
+  },
+  include: [
+    {
+      model: db.model('reviews')
+    }
+  ]
 })

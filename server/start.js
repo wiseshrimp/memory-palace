@@ -18,7 +18,7 @@ const app = express()
 if (!pkg.isProduction) {
   // Logging middleware (dev & testing only)
   app.use(require('volleyball'))
-}  
+}
 
 module.exports = app
   // We'll store the whole session in a cookie
@@ -37,12 +37,13 @@ module.exports = app
   }))
   .use(passport.initialize())
   .use(passport.session())
-  
+
   // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'public')))
   .use('/bootstrap', express.static(resolve(__dirname, '..', 'node_modules', 'bootstrap', 'dist')))
   .use('/jquery', express.static(resolve(__dirname, '..', 'node_modules', 'jquery', 'dist')))
   .use('/font-awesome', express.static(resolve(__dirname, '..', 'node_modules', 'font-awesome')))
+  .use('react-star-rating', express.static(resolve(__dirname, '..', 'node_modules', 'dist')))
 
 
   // Serve our api
@@ -53,12 +54,12 @@ module.exports = app
 
 if (module === require.main) {
   // Start listening only if we're the main module.
-  // 
+  //
   // https://nodejs.org/api/modules.html#modules_accessing_the_main_module
   const server = app.listen(
     process.env.PORT || 1337,
     () => {
-      console.log(`--- Started HTTP Server for ${pkg.name} ---`)      
+      console.log(`--- Started HTTP Server for ${pkg.name} ---`)
       console.log(`Listening on ${JSON.stringify(server.address())}`)
     }
   )

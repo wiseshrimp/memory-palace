@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
+import ProductThumbnail from './ProductThumbnail'
+
 
 export default class SearchedItemList extends React.Component {
     render() {
@@ -6,18 +9,10 @@ export default class SearchedItemList extends React.Component {
         if (products.length !== 0) {
             return (
                 <div className="row">
-                    <h4>{products.length} results for {routeParams.term}</h4>
-                    {products.map(product => (
-                        <div key={product.id} className="col-sm-6 col-md-3">
-                            <div className="thumbnail">
-                                <img src={product.imageUrl} />
-                                <div className="caption">
-                                  <h3>{product.title}</h3>
-                                  <p><a href="#" className="btn btn-primary" role="button">Add To Cart</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        ))
+                  <h4>{products.length} results for {routeParams.term}</h4>
+                    {products && products.map(product => (
+                      <ProductThumbnail key={product.id} product={product} />
+                      ))
                     }
                 </div>
             )

@@ -1,3 +1,5 @@
+var Promise = require('bluebird');
+
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 
 // action-creators
@@ -11,10 +13,30 @@ export const loadProductList = (products) => {
 // async action creators
 export const loadProducts = () => {
     const thunk = function (dispatch) {
-      fetch('api/products')
+      Promise.all([
+        fetch('api/products')
           .then(res => res.json())
-          .then(products => dispatch(loadProductList(products)))
-          .catch(err => console.log(err));
+          .catch(err => console.log(err))
+        ,
+        fetch('api/mostPopular')
+          .then(res => res.json())
+          .catch(err => console.log(err))
+      ])
+      .then((results) => {
+        let tmp = {};
+        results[1].forEach(e => tmp[e.product_id] = Number(e.Product_Count));
+        results[0].forEach(e => e["count"]=tmp[e.id]||0);
+        const products = results[0].sort((a,b) => {
+          if (a.count < b.count) {
+            return 1;
+          }
+          if (a.count > b.count) {
+            return -1;
+          }
+          return 0;
+        });
+        dispatch(loadProductList(products));
+       })
     }
     return thunk;
 }
