@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/wiseshrimp/memory-palace",
   "dependencies": {
+    "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
@@ -43,8 +44,8 @@
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
-    "nodemon": "^1.11.0",
     "moment": "^2.15.2",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
