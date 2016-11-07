@@ -8,11 +8,10 @@ module.exports = router;
 router.put('/:userId', function (req, res, next) {
   User.findById(req.params.userId) //insert id message
   .then(foundUser => {
-    foundUser.update(req.body)
+    return foundUser.update(req.body)
   })
   .then(updatedUser => {
     req.session.user = updatedUser;
-    console.log(req.session.user)
     res.send(req.session.user);
   })
   .catch(next)
