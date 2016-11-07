@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import SearchBar from '../components/SearchBar';
+import MiniCart from '../containers/MiniCart';
 
 export default class Navbar extends React.Component {
     constructor(props) {
@@ -47,13 +48,14 @@ export default class Navbar extends React.Component {
                         </ul>
                     </li>
                     <li><Link to="/genre/feel-good" id="feel-good">feel-good</Link></li>
+                    <li><Link to="/genre/romance" id="romance">romance</Link></li>
                     </ul>
                 </li>
                 </ul>
                 
                 <ul className="nav navbar-nav navbar-right">
                     <SearchBar />
-                    <li><Link to="/cart/1"><span className="glyphicon glyphicon-shopping-cart"></span></Link></li>                    
+                    <MiniCart />        
                     <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#"><span className="glyphicon glyphicon-user"></span></a>
                         <ul className="dropdown-menu">
                             <li><a href="#">Account</a></li>

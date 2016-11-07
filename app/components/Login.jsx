@@ -87,15 +87,6 @@ export default class Login extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="form-group">
-                                            <div className="row">
-                                                <div className="col-lg-12">
-                                                    <div className="text-center">
-                                                        <a href="#" tabIndex="5" className="forgot-password">Forgot Password?</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </form>
                                     <form id="register-form" action="#" method="post" role="form" onSubmit={this.onUserSubmit}>
                                         <div className="form-group">
@@ -127,4 +118,4 @@ export default class Login extends React.Component {
             </div>
         )
     }
-}
+} 
