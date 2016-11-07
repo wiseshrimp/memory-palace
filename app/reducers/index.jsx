@@ -8,6 +8,7 @@ import { LOGIN_USER, LOGOUT_USER } from '../actions/login-actions';
 import { RECEIVE_PRODUCT } from '../actions/product-actions';
 import { RECEIVE_USER_ORDER_HISTORY } from '../actions/orderhistory-actions';
 import { REGISTER_USER } from '../actions/register-actions';
+import { LOAD_GENRE } from '../actions/genre-actions';
 
 
 const initialState = {
@@ -30,6 +31,8 @@ const productListReducer = function (state = [], action) {
     case LOAD_PRODUCTS:
       return action.payload;
     case SEARCHBAR_REQUEST:
+      return action.payload;
+    case LOAD_GENRE:
       return action.payload;
     default: return state;
   }
