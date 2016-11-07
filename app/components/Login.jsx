@@ -40,14 +40,17 @@ export default class Login extends React.Component {
     }
 
     onUserSubmit(event) {
+        event.preventDefault();
         const userCred = {
-            name: event.target.user_name.value,
             email: event.target.email.value,
             password: event.target.password.value
         }
-        event.preventDefault();
+
         if (event.target.id === 'login-form') this.props.login(userCred);
-        else this.props.registerUser(userCred);
+        else {
+            userCred.name = event.target.user_name.value;
+            this.props.registerUser(userCred);
+        }
     }
 
     render() {
