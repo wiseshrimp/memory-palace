@@ -12,6 +12,7 @@ api
   .use('/mostPopular', require('./mostPopular'))
   .use('/login', require('./login'))
   .use('/orderhistory', require('./order-history'))
+  .use('/register', require('./register'))
 
 // Send along any errors
 api.use((err, req, res, next) => {

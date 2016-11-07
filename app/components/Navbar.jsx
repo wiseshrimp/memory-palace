@@ -10,11 +10,14 @@ export default class Navbar extends React.Component {
     }
 
     triggerLogout() {
-        if (this.props.loginUser.email) {
-            return (
-                <li><a href="#" onClick={this.props.logout}>Logout</a></li>
-            )
-        }
+        return (
+            <li><a
+                href="#"
+                onClick={() => {
+                    this.props.logout()
+                        .then(function () { this.forceUpdate() })
+                } }>Logout</a></li>
+        )
     }
 
     render() {
@@ -59,7 +62,7 @@ export default class Navbar extends React.Component {
                     <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#"><span className="glyphicon glyphicon-user"></span></a>
                         <ul className="dropdown-menu">
                             <li><a href="#">Account</a></li>
-                            {this.triggerLogout()}
+                            {(this.props.loginUser.email) ? this.triggerLogout() : null}
                         </ul>
                     </li>
                     <li><Link to="/login" activeClassName="active"><span className="glyphicon glyphicon-log-in"></span></Link></li>

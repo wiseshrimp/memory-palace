@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Login from '../components/Login';
 import { fetchLoginUser, logoutUser } from '../actions/login-actions';
+import { createUser } from '../actions/register-actions';
 
 function mapStateToProps(state) {
     return {
@@ -15,6 +16,9 @@ function mapDispatchToProps(dispatch) {
         },
         logout: () => {
             dispatch(logoutUser())
+        },
+        registerUser: (userCred) => {
+            dispatch(createUser(userCred))
         }
         
     }

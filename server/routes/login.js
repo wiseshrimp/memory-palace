@@ -6,13 +6,6 @@ const User = require('APP/db/models/user')
 
 module.exports = router;
 
-router.get('/', function (req, res, next) {
-    if (!req.session.counter) req.session.counter = 0;
-    console.log(req.session);
-    console.log('counter', ++req.session.counter);
-    next();
-})
-
 router.post('/', (req, res, next) => {
     User.findOne({
         where: {
@@ -33,12 +26,12 @@ router.post('/', (req, res, next) => {
                 res.send(foundUser);
             }
             else res.send('Wrong password')
-   })
-   .catch(next)
-})
+        })
+        .catch(next)
+});
 
-router.put('/', function (req, res, next) {
-    req.session.destroy();
+router.get('/', function (req, res, next) {
+    req.session = null;
     res.status(200).end();
 })
 

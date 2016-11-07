@@ -6,24 +6,48 @@ import { Link } from 'react-router';
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.onLoginSubmit = this.onLoginSubmit.bind(this);
+        this.onUserSubmit = this.onUserSubmit.bind(this);
+        this.checkPasswordMatch = this.checkPasswordMatch.bind(this);
+    }
+    
+    componentWillMount() {
+        $(function() {
+            $('#login-form-link').click(function(e) {
+                $("#login-form").delay(100).fadeIn(100);
+                $("#register-form").fadeOut(100);
+                $('#register-form-link').removeClass('active');
+                $(this).addClass('active');
+                e.preventDefault();
+            });
+            $('#register-form-link').click(function(e) {
+                $("#register-form").delay(100).fadeIn(100);
+                $("#login-form").fadeOut(100);
+                $('#login-form-link').removeClass('active');
+                $(this).addClass('active');
+                e.preventDefault();
+            });
+        });
     }
 
     checkPasswordMatch() {
-        var password = $("#password").val();
+        var password = $("#new_password").val();
         var confirmPassword = $("#confirm_password").val();
 
-        if (password != confirmPassword)
+        if (password !== confirmPassword)
             $("#password_message").html("Passwords do not match!");
+        else
+            $("#password_message").html("");
     }
 
-    onLoginSubmit(event) {
+    onUserSubmit(event) {
         const userCred = {
+            name: event.target.user_name.value,
             email: event.target.email.value,
             password: event.target.password.value
         }
         event.preventDefault();
-        this.props.login(userCred);
+        if (event.target.id === 'login-form') this.props.login(userCred);
+        else this.props.registerUser(userCred);
     }
 
     render() {
@@ -46,7 +70,7 @@ export default class Login extends React.Component {
                         <div className="panel-body">
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <form id="login-form" action="#" method="post" role="form" onSubmit={this.onLoginSubmit}>
+                                    <form id="login-form" action="#" method="post" role="form" onSubmit={this.onUserSubmit}>
                                         <div className="form-group">
                                             <input type="text" name="email" id="email" tabIndex="1" className="form-control" placeholder="Email Address" />
                                         </div>
@@ -70,12 +94,15 @@ export default class Login extends React.Component {
                                             </div>
                                         </div>
                                     </form>
-                                    <form id="register-form" action="#" method="post" role="form">
+                                    <form id="register-form" action="#" method="post" role="form" onSubmit={this.onUserSubmit}>
+                                        <div className="form-group">
+                                            <input type="text" name="user_name" id="user_name" tabIndex="1" className="form-control" placeholder="Name" />
+                                        </div>
                                         <div className="form-group">
                                             <input type="email" name="email" id="email" tabIndex="1" className="form-control" placeholder="Email Address" />
                                         </div>
                                         <div className="form-group">
-                                            <input type="password" name="password" id="password" tabIndex="2" className="form-control" placeholder="Password" />
+                                            <input type="password" name="password" id="new_password" tabIndex="2" className="form-control" placeholder="Password" />
                                         </div>
                                         <div className="form-group">
                                             <h5 id="password_message"></h5>

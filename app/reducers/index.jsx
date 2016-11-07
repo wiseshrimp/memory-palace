@@ -7,6 +7,7 @@ import { LOAD_PRODUCTS } from '../actions/home-actions';
 import { LOGIN_USER, LOGOUT_USER } from '../actions/login-actions';
 import { RECEIVE_PRODUCT } from '../actions/product-actions';
 import { RECEIVE_USER_ORDER_HISTORY } from '../actions/orderhistory-actions';
+import { REGISTER_USER } from '../actions/register-actions';
 
 
 const initialState = {
@@ -40,6 +41,8 @@ const loginReducer = function (state = {}, action) {
       return action.payload;
     case LOGOUT_USER:
       return action.payload;
+    case REGISTER_USER:
+      return action.payload;
     default:
       return state;
   }
@@ -69,8 +72,5 @@ const rootReducer = combineReducers({
   product: productReducer,
   orderHistory: orderHistoryReducer
 });
-
-
-
 
 export default rootReducer;

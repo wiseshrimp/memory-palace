@@ -15,7 +15,7 @@ export const loadLoggingInUser = (loginUser) => {
 export const logoutCurrentUser = () => {
     return ({
         type: LOGOUT_USER,
-        payload: null
+        payload: {}
     })
 }
 
@@ -31,11 +31,18 @@ export const fetchLoginUser = (userCred) => {
 
 export const logoutUser = () => {
     const thunk = (dispatch) => {
-        axios.put('api/login')
+        axios.get('api/login')
             .then(res => {
+                dispatch(logoutCurrentUser());
                 console.log('Ending current session.')
-                dispatch(logoutCurrentUser())
             })
+            .catch(err => console.error('Error logging out current user: ', err))
     }
     return thunk;
+}
+
+export const retrieveLoggedInUser = () => dispatch => {
+    axios.get('/api/login/me')
+        .then(res => dispatch(loadLoggingInUser(res.data)))
+        .catch(err => console.error('retrieveLoggedInUser unsuccessful: ', err));
 }

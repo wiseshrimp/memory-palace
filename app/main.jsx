@@ -23,6 +23,7 @@ import { fetchSearchRequest } from './actions/searchbar-actions';
 import { loadProducts } from './actions/home-actions';
 import { loadProduct } from './actions/product-actions';
 import { loadOrderHistory } from './actions/orderhistory-actions';
+import { retrieveLoggedInUser } from './actions/login-actions';
 
 function onEnterUserCart(nextState) {
   store.dispatch(loadCart(nextState.params.userId))
@@ -44,10 +45,14 @@ function onEnterOrderHistory(nextState) {
   store.dispatch(loadOrderHistory(nextState.params.userId))
 }
 
+function onEnterRetrieveLoggedInUser(nextState) {
+  store.dispatch(retrieveLoggedInUser())
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" onChange={(prevState, nextState) => {
+      <Route path="/" onEnter={onEnterRetrieveLoggedInUser} onChange={(prevState, nextState) => {
           if (nextState.location.action !== "POP") {
             window.scrollTo(0, 0);
           }
