@@ -58,6 +58,8 @@ export default class Navbar extends React.Component {
                     <MiniCart />        
                     <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#"><span className="glyphicon glyphicon-user"></span></a>
                         <ul className="dropdown-menu">
+                            {(this.props.loginUser.name) ? <li><a href="#">{this.props.loginUser.name}</a></li> : <li><Link to="/login">Log In</Link></li>}
+                            <li className="divider"></li>
                             <li><a href="#">Account</a></li>
                             {(this.props.loginUser.email) ? this.triggerLogout() : null}
                         </ul>
