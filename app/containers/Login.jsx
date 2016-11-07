@@ -4,7 +4,7 @@ import { fetchLoginUser, logoutUser } from '../actions/login-actions';
 
 function mapStateToProps(state) {
     return {
-        currentUser: state.loginUser
+        loginUser: state.loginUser
     }
 }
 

@@ -9,6 +9,14 @@ export default class Navbar extends React.Component {
         super(props);
     }
 
+    triggerLogout() {
+        if (this.props.loginUser) {
+            return (
+                <li><a href="#">Logout</a></li>
+            )
+        }
+    }
+
     render() {
         return (
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -48,7 +56,12 @@ export default class Navbar extends React.Component {
                 <ul className="nav navbar-nav navbar-right">
                     <SearchBar />
                     <li><Link to="/cart/1"><span className="glyphicon glyphicon-shopping-cart"></span></Link></li>                    
-                    <li><a href="#"><span className="glyphicon glyphicon-user"></span></a></li>
+                    <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#"><span className="glyphicon glyphicon-user"></span></a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">Account</a></li>
+                            {this.triggerLogout}
+                        </ul>
+                    </li>
                     <li><Link to="/login" activeClassName="active"><span className="glyphicon glyphicon-log-in"></span></Link></li>
                 </ul>
             </div>
