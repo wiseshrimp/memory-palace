@@ -44,10 +44,6 @@ export default class Navbar extends React.Component {
                             <li><a href="#">bad horror</a></li>
                             <li><a href="#">foreign horror</a></li>
                             <li><a href="#">cannibal horror</a></li>
-                            <li className="divider"></li>
-                            <li className="nav-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
                     <li><Link to="/genre/feel-good" id="feel-good">feel-good</Link></li>
