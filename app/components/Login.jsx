@@ -86,7 +86,8 @@ export default class Login extends React.Component {
                                                     <input type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" value="Log In" />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>  
+
                                     </form>
                                     <form id="register-form" action="#" method="post" role="form" onSubmit={this.onUserSubmit}>
                                         <div className="form-group">

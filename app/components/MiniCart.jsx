@@ -19,13 +19,13 @@ export default class MiniCart extends React.Component {
                                     <span className="item">
                                         <span className="item-left">
                                             <img id="mini-cart-image" src={product.imageUrl} alt="" />
-                                            <span className="item-info">
-                                                <span id="mini-cart-product-title">{product.title}</span>
+                                            <span className="item-info"> 
+                                                <Link to={`products/${product.id}`}><span id="mini-cart-product-title">{product.title}</span></Link>
                                                 <span>${product.price}</span>
                                             </span>
                                         </span>
                                         <span className="item-right">
-                                            <button className="btn btn-xs btn-danger pull-right">x</button>
+                                            <button className="btn btn-xs btn-danger pull-right">Delete</button>
                                         </span>
                                     </span>
                                 </li> 
