@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Product from '../components/Product';
-import { loadProduct } from '../actions/product-actions';
+import { addToCartAsync } from '../actions/product-actions';
 
 function mapStateToProps(state){
   return {
@@ -8,4 +8,13 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(Product);
+function mapDispatchToProps(dispatch){
+  return {
+    addToCart: function(details) {
+    	event.preventDefault();
+    	dispatch(addToCartAsync(details))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

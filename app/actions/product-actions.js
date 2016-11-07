@@ -1,3 +1,6 @@
+import {loadCart} from './cart-actions';
+import axios from 'axios';
+
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 
@@ -25,5 +28,15 @@ export const loadProduct = (productId) => {
   }
   return thunk;
 }
+
+export const addToCartAsync = (details) => {
+  const thunk = function (dispatch) {
+    axios.post(`api/cart/addProduct`, details)
+      .then( () => dispatch( loadCart(1) ) )
+      .catch(err => console.log(err))
+  }
+  return thunk;
+}
+
 
 // export const loadReview = (reviewId)
