@@ -40,7 +40,6 @@ export default class Login extends React.Component {
                                     <div className="col-xs-6">
                                         <a href="#" id="register-form-link">Register</a>
                                     </div>
-                                    <button onClick={this.props.logout}>Logout</button>
                                 </div>
                             </div>
                         </div>
