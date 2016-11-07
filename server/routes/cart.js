@@ -37,8 +37,47 @@ customCartRoutes.post('/addProduct', (req,res,next) => {
 		})
 		return Promise.all([createCartPromise])
 	})
-	.then(createdCartProduct => {console.log("added product"); res.send(createdCartProduct)})
+	.then(createdCartProduct => res.send(createdCartProduct))
 	.catch(next)
 });
 
-//where to get cartID from?
+
+//update cart quantity 
+customCartRoutes.post('/update', (req,res,next) => {
+	let cartId;
+
+	Cart.findOne({
+		where: {user_id: 1}
+	})
+	.then(foundCart => {
+		cartId = foundCart.id;
+		return Promise.all(req.body.products.map(e => {
+			CartProduct.update({
+				quantity: e.cart_product.quantity
+			}, {
+				where: {
+					cart_id: foundCart.id,
+					product_id: e.id
+				}
+			})
+		})) 
+	})
+	.then(() => {
+		Cart.findOne({
+			where: {
+				id: cartId
+			}, include: [
+				{
+					model: db.model('products')
+				}
+			]
+		})
+		.then(foundCart => res.json(foundCart))
+	})
+	.catch(next)
+});
+
+
+
+
+

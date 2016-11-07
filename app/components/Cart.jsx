@@ -1,4 +1,5 @@
 import {Link} from 'react-router';
+import CurrencyFormatter from 'currency-formatter';
 
 /*
     TO DO:
@@ -10,9 +11,25 @@ import {Link} from 'react-router';
 import React from 'react';
 
 export default class Cart extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      products: []
+    }
+    this.changeQuantitySubmit = this.changeQuantitySubmit.bind(this);
+  }
+
+
+  changeQuantitySubmit(event) {
+      event.preventDefault();
+      this.props.changeQuantity(this.state);
+    }
+
     render() {
         let {products} = this.props.cart;
         return (
+          <div>
+            <h1> Your Cart </h1>
             <div className="container">
               <div className="row">
                 <div className="col-sm-12 col-md-10 col-md-offset-1">
@@ -20,6 +37,7 @@ export default class Cart extends React.Component {
                     <thead>
                       <tr>
                         <th>Product</th>
+                        <th></th>
                         <th>Quantity</th>
                         <th className="text-center">Price</th>
                         <th className="text-center">Total</th>
@@ -29,8 +47,14 @@ export default class Cart extends React.Component {
                     <tbody>
 
                       {/* PRODUCT LOOP BEGINS HERE: */}
-                      {products && products.map(product => {
+                      {products && products.map((product,i) => {
+
+                          const productQuantity = product.cart_product.quantity;
+                          const productPrice = CurrencyFormatter.format(product.price, { code: 'USD' });
+                          const totalProduct = CurrencyFormatter.format((productQuantity*product.price), { code: 'USD' });
+
                         return (
+                  
                           <tr key={product.id}>
                             <td className="col-sm-8 col-md-6">
                               <div className="media">
@@ -41,16 +65,21 @@ export default class Cart extends React.Component {
                                 </div>
                               </div>
                             </td>
+                        
+                            <td></td>
                             <td className="col-sm-1 col-md-1">
-                              <input type="email" className="form-control" id="exampleInputEmail1" value="3" />
+
+                                  <input type="number" className="form-control" name="quantity" id="quantity" min="0" defaultValue={productQuantity} onChange={(event) => {
+                                    products[i].cart_product.quantity = Number(event.target.value);
+                                    this.setState({products: products});
+                                  }} />
+                                
+
                             </td>
-                            <td className="col-sm-1 col-md-1 text-center"><strong>{product.price}</strong></td>
-                            <td className="col-sm-1 col-md-1 text-center"><strong>{product.price * 3}</strong></td>
-                            <td className="col-sm-1 col-md-1">
-                              <button type="button" className="btn btn-danger">
-                                <span className="glyphicon glyphicon-remove"></span> Remove
-                              </button></td>
+                            <td className="col-sm-1 col-md-1 text-center"><strong>{productPrice}</strong></td>
+                            <td className="col-sm-1 col-md-1 text-center"><strong>{totalProduct}</strong></td>
                           </tr>
+
                         )
                       })
                       }
@@ -79,7 +108,14 @@ export default class Cart extends React.Component {
                       <tr>
                         <td>   </td>
                         <td>   </td>
-                        <td>   </td>
+                    
+                          <td className="col-sm-1 col-md-1">
+                            
+                                <button type="button" className="btn btn-info" onClick={this.changeQuantitySubmit}>
+                                  Update
+                                </button>
+                            
+                            </td>
                         <td>
                           <button type="button" className="btn btn-default">
                             <span className="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
@@ -94,6 +130,7 @@ export default class Cart extends React.Component {
                 </div>
               </div>
             </div>
+          </div>
 
         )
     }

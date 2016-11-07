@@ -1,6 +1,6 @@
 import React from 'react';
 import StarRating from 'react-star-rating';
-import { addToCartAsync } from '../actions/product-actions';
+
 
 // TO DO: add user association to reviews so that name of reviewer can show up next to reviews
 // add integration of averageRating

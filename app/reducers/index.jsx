@@ -8,12 +8,12 @@ import { RECEIVE_PRODUCT } from '../actions/product-actions';
 import { RECEIVE_USER_ORDER_HISTORY } from '../actions/orderhistory-actions';
 
 
-const initialState = {
-  cart: {},
-  products: [],
-  product: {},
-  orderHistory: []
-};
+// const initialState = {
+//   cart: {},
+//   products: [],
+//   product: {},
+//   orderHistory: []
+// };
 
 const cartReducer = function (state = {}, action) {
   switch (action.type) {
