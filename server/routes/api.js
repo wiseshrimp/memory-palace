@@ -14,6 +14,7 @@ api
   .use('/orderhistory', require('./order-history'))
   .use('/register', require('./register'))
   .use('/genre', require('./genre'))
+  .use('/updateUser', require('./updateUser'))
 
 // Send along any errors
 api.use((err, req, res, next) => {

@@ -9,7 +9,7 @@ export default class Login extends React.Component {
         this.onUserSubmit = this.onUserSubmit.bind(this);
         this.checkPasswordMatch = this.checkPasswordMatch.bind(this);
     }
-    
+
     componentWillMount() {
         $(function() {
             $('#login-form-link').click(function(e) {
@@ -52,7 +52,7 @@ export default class Login extends React.Component {
             this.props.registerUser(userCred);
         }
     }
-
+    
     render() {
         return (
             <div className="container">
@@ -119,4 +119,4 @@ export default class Login extends React.Component {
             </div>
         )
     }
-} 
+}
