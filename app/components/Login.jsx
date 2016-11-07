@@ -9,7 +9,7 @@ export default class Login extends React.Component {
         this.onUserSubmit = this.onUserSubmit.bind(this);
         this.checkPasswordMatch = this.checkPasswordMatch.bind(this);
     }
-    
+
     componentWillMount() {
         $(function() {
             $('#login-form-link').click(function(e) {
@@ -40,16 +40,19 @@ export default class Login extends React.Component {
     }
 
     onUserSubmit(event) {
+        event.preventDefault();
         const userCred = {
-            name: event.target.user_name.value,
             email: event.target.email.value,
             password: event.target.password.value
         }
-        event.preventDefault();
-        if (event.target.id === 'login-form') this.props.login(userCred);
-        else this.props.registerUser(userCred);
-    }
 
+        if (event.target.id === 'login-form') this.props.login(userCred);
+        else {
+            userCred.name = event.target.user_name.value;
+            this.props.registerUser(userCred);
+        }
+    }
+    
     render() {
         return (
             <div className="container">

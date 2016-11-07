@@ -17,6 +17,8 @@ import Cart from './containers/Cart';
 import ProductContainer from './containers/Product';
 import SearchedItemList from './containers/SearchedItemList';
 import OrderHistory from './containers/OrderHistory';
+import UserPage from './containers/UserPage';
+import EditUserPage from './containers/EditUserPage';
 
 import { loadCart } from './actions/cart-actions';
 import { fetchSearchRequest } from './actions/searchbar-actions';
@@ -63,6 +65,9 @@ ReactDOM.render(
         <Route path='/search/:term' component={SearchedItemList} onEnter={onEnterSearchBar} />
         <Route path='/products/:productId' component={ProductContainer} onEnter={onEnterLoadProduct} />
         <Route path='/orderhistory/:userId' component={OrderHistory} onEnter={onEnterOrderHistory} />
+        <Route path='/users/profile' component={UserPage}/>
+        <Route path='/users/profile/edit' component={EditUserPage}/>
+
       </Route>
     </Router>
   </Provider>,

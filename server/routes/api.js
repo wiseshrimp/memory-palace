@@ -13,6 +13,7 @@ api
   .use('/login', require('./login'))
   .use('/orderhistory', require('./order-history'))
   .use('/register', require('./register'))
+  .use('/updateUser', require('./updateUser'))
 
 // Send along any errors
 api.use((err, req, res, next) => {

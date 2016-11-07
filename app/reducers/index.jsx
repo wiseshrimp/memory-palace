@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 import { RECEIVE_USER_CART } from '../actions/cart-actions';
 import { SEARCHBAR_REQUEST } from '../actions/searchbar-actions';
 import { LOAD_PRODUCTS } from '../actions/home-actions';
-import { LOGIN_USER, LOGOUT_USER } from '../actions/login-actions';
+import { LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '../actions/login-actions';
 import { RECEIVE_PRODUCT } from '../actions/product-actions';
 import { RECEIVE_USER_ORDER_HISTORY } from '../actions/orderhistory-actions';
 import { REGISTER_USER } from '../actions/register-actions';
@@ -42,6 +42,8 @@ const loginReducer = function (state = {}, action) {
     case LOGOUT_USER:
       return action.payload;
     case REGISTER_USER:
+      return action.payload;
+    case UPDATE_USER:
       return action.payload;
     default:
       return state;
