@@ -39,13 +39,20 @@ const loginReducer = function (state = {}, action) {
     case LOGIN_USER:
       return action.payload;
     case LOGOUT_USER:
-const productReducer = function (state = {}, action) {
-  switch (action.type) {
-    case RECEIVE_PRODUCT:
       return action.payload;
-    default: return state;
+    default:
+      return state;
   }
 }
+
+const productReducer = function (state = {}, action) {
+    switch (action.type) {
+      case RECEIVE_PRODUCT:
+        return action.payload;
+      default: return state;
+    }
+}
+
 
 const orderHistoryReducer = function (state = [], action) {
   switch (action.type) {
@@ -58,8 +65,7 @@ const orderHistoryReducer = function (state = [], action) {
 const rootReducer = combineReducers({
   cart: cartReducer,
   products: productListReducer,
-  loginUser: loginReducer
-})
+  loginUser: loginReducer,
   product: productReducer,
   orderHistory: orderHistoryReducer
 });
