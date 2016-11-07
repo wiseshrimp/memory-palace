@@ -1,4 +1,5 @@
 @import url('product.css');
+@import url('userpage.css');
 
 body {
     padding: 70px;
@@ -94,6 +95,3 @@ body {
 .product-icon{
   margin: 5px;
 }
-
-
-

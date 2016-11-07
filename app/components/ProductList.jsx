@@ -4,7 +4,6 @@ import ProductThumbnail from './ProductThumbnail'
 
 export default class ProductList extends React.Component {
     render() {
-
       const {products} = this.props;
 
       return (

@@ -28,7 +28,7 @@ const User = db.define('users', {
     beforeUpdate: setEmailAndPassword,
   },
   instanceMethods: {
-    authenticate(plaintext) {
+    authenticate(plaintext) { // LOGIN
       return new Promise((resolve, reject) =>
         bcrypt.compare(plaintext, this.password_digest,
           (err, result) =>
