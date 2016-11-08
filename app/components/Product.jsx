@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactStars from 'react-stars';
+import StarRating from './StarRating'
 
 // TO DO: add user association to reviews so that name of reviewer can show up next to reviews
 // add integration of averageRating
@@ -32,14 +32,6 @@ export default class Product extends React.Component {
      const { product, loginUser } = this.props;
 
     // find and set average of product reviews once state has updated
-    let averageRating = 0;
-    if (product.reviews){
-      for (var i = 0; i < product.reviews.length; i++){
-        averageRating += product.reviews[i].rating
-      }
-      averageRating /= product.reviews.length;
-      averageRating = (Math.round(averageRating * 2) / 2).toFixed(1);
-    }
 
     if (product) {
       return (
@@ -52,8 +44,7 @@ export default class Product extends React.Component {
 
                   <div className="col-md-9 product-top-right">
                     <div className="product-title">{product.title}</div>
-                    <div className="product-rating">
-                      <ReactStars count={5} value={averageRating} edit={false} size={24} color2={'#ffd700'} /></div>
+                    <StarRating key={product.id} product={product} />
                     <hr />
                     <div className="product-price">${product.price}</div>
                     <div className="product-genre">{product.genre}</div>
