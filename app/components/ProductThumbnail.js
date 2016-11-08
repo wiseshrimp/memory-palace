@@ -7,7 +7,7 @@ const ProductThumbnail = ({product}) => (
     <div className="thumbnail clearfix">
       <Link to={`products/${product.id}`}><img src={ product.imageUrl} /></Link>
       <div className="caption">
-        <h4><Link to={`products/${product.id}`}>{product.title}</Link></h4>
+        <h4 className="product-thumbnail-header"><Link to={`products/${product.id}`}>{product.title}</Link></h4>
         <hr />
         <div>
           <h4 className="pull-left">{CurrencyFormatter.format(product.price, { code: 'USD' })}</h4>

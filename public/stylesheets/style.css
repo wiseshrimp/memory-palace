@@ -12,6 +12,15 @@ body {
     text-shadow: 2px 2px 2px #bbd0ed;
 }
 
+.product-thumbnail-header {
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.product-thumbnail-header:hover {
+    text-shadow: 2px 2px 2px #ffc9f5;
+}
+
 .navbar {
     opacity: 0.85
 }
