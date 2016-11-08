@@ -26,18 +26,12 @@ export default class Navbar extends React.Component {
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
             <div className="navbar-header">
-                <Link to="/" className="navbar-brand" href="#">MEMORY PALACE</Link>                
+                <Link to="/" className="navbar-brand" href="#"><img src="palace.png" height="30" /></Link>                
             </div>
             <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav">
-                <li>
-                    <Link to="/" activeClassName="active">memories</Link>
-                </li>
-                <li>
-                    <Link to="/" activeClassName="active">stories</Link>
-                </li>
                 <li className="dropdown">
-                    <a data-toggle="dropdown" className="dropdown-toggle" href="#">genres <b className="caret"></b></a>
+                    <a data-toggle="dropdown" className="dropdown-toggle" href="#">explore <b className="caret"></b></a>
                     <ul className="dropdown-menu">
                     <li>
                         <Link to="/genre/horror" id="horror">horror <i className="fa fa-caret-right"></i></Link>
