@@ -27,6 +27,10 @@
   },
   "homepage": "https://github.com/wiseshrimp/memory-palace",
   "dependencies": {
+    "aframe": "^0.3.2",
+    "aframe-bmfont-text-component": "^0.1.4",
+    "aframe-obj-loader-component": "^0.2.0",
+    "aframe-react": "^3.4.0",
     "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
     "bcrypt": "^0.8.7",
@@ -57,6 +61,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
     "react-star-rating": "^1.4.2",
+    "react-three": "^0.9.4",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
