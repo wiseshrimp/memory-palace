@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from 'react-star-rating';
+import ReactStars from 'react-stars';
 
 // TO DO: add user association to reviews so that name of reviewer can show up next to reviews
 // add integration of averageRating
@@ -14,22 +14,14 @@ export default class Product extends React.Component {
     const { product } = this.props;
 
     // find and set average of product reviews once state has updated
-    let averageRating = 0, remainder = 0, starArray = [];
+    let averageRating = 0;
     if (product.reviews){
       for (var i = 0; i < product.reviews.length; i++){
         averageRating += product.reviews[i].rating
       }
       averageRating /= product.reviews.length;
-      averageRating = Math.round(averageRating);
-      remainder = 5 - averageRating;
+      averageRating = (Math.round(averageRating * 2) / 2).toFixed(1);
     }
-
-    // for (var i=0; i<averageRating; i++){
-    //   starArray[i].push(React.createElement("i", {className: "fa fa-star gold"}))
-    // }
-    // for (var i=0; i<remainder; i++){
-    //   starArray[i].push(React.createElement("i", {className: "fa fa-star-o"}))
-    // }
 
     if (product) {
       return (
@@ -44,7 +36,7 @@ export default class Product extends React.Component {
         				<div className="col-md-9 product-top-right">
         					<div className="product-title">{product.title}</div>
         					<div className="product-rating">
-                  <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star-o"></i></div>
+                  <ReactStars count={5} value={averageRating} edit={false} size={24} color2={'#ffd700'} /></div>
         					<hr />
         					<div className="product-price">${product.price}</div>
                   <div className="product-genre">{product.genre}</div>
@@ -52,9 +44,6 @@ export default class Product extends React.Component {
                   <div className="list-group list-group-horizontal">
                   {product.keywords && product.keywords.map(keywords => {
                       <a href="#" >{keywords}, </a>
-                      {/* <a href="#" >Keyword Two, </a>
-                      <a href="#" >Keyword Three, </a>
-                      <a href="#" >Keyword Four</a> */}
                   })
                 }
                   </div>
@@ -81,6 +70,7 @@ export default class Product extends React.Component {
         							</section>
         						</div>
           					<div className="tab-pane fade" id="service-three">
+                    <br />
                     {product.reviews && product.reviews.map(review =>
                       <div key={review.id}>Rating: {review.rating}
                       <p>"{review.text}"</p>
