@@ -17,9 +17,8 @@ export default class Cart extends React.Component {
       products: []
     }
     this.changeQuantitySubmit = this.changeQuantitySubmit.bind(this);
-  }
-
-
+   }
+  
   changeQuantitySubmit(event) {
       event.preventDefault();
       this.props.changeQuantity(this.state);
@@ -121,9 +120,12 @@ export default class Cart extends React.Component {
                             <span className="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                           </button></td>
                         <td>
-                          <button type="button" className="btn btn-success">
+                          <Link to="/checkout">
+                            <button type="button" className="btn btn-success">
                             Checkout <span className="glyphicon glyphicon-play"></span>
-                          </button></td>
+                            </button>
+                          </Link>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

@@ -1,11 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Checkout extends React.Component {
     
     render() {
-        let {cart} = this.props;
-        console.log(this.props);
-        return (
+        let {products} = this.props.cart;
+        let price = 0;
+        var style = {
+            textAlign: "right"
+        }
+        if (products === undefined) return (
+            <div className="container">
+                <h3>Add things to your cart before checking out!</h3>
+            </div>
+        )
+        else return (
             <div className="container">
                 <div className='row'>
                     <div className='col-md-12'>
@@ -30,37 +39,25 @@ export default class Checkout extends React.Component {
                                                     <div className="panel-body">
                                                         <div className="items">
                                                             <div className="col-md-9">
-                                                                <table className="table table-striped">                                                                        
                                                                     {
-                                                                        (cart.products) ?
-                                                                            (cart.products.forEach((item, i) => {
-                                                                                return (
-                                                                                    <tbody key={i}>
-                                                                                        <tr>
-                                                                                            <td colSpan="2">
-                                                                                                <a className="btn btn-warning btn-sm pull-right"
-                                                                                                    href="#" title="Remove Item">X</a>
-                                                                                                <b>{item.title}</b>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td>
-                                                                                                {item.price}
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>    
-                                                                                )
-                                                                            })) :
-                                                                            <tbody><h3>Your cart is empty!</h3></tbody>
-                                                                        }
-                
-                                                                </table>
-                                                            </div>
-                                                            <div className="col-md-3">
-                                                                <div>
-                                                                    <h3>Order Total</h3>
-                                                                    <h3><span>$147.00</span></h3>
-                                                                </div>
+                                                                        (products && products.map((product, i) => {
+                                                                            price += Number(product.price);
+                                                                            return (
+                                                                                    <tr key={product.id}>
+                                                                                        <td className="col-sm-8 col-md-7">
+                                                                                        <div className="media">
+                                                                                            <Link to={`/products/${product.id}`} className="thumbnail pull-left product-icon"> <img className="media-object" src={product.imageUrl} /> </Link>
+                                                                                            <div className="media-body">
+                                                                                            <h4 className="media-heading"><Link to={`/products/${product.id}`}>{product.title}</Link></h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        </td>
+                                                                                    
+                                                                                        <td className="col-sm-1 col-md-1 text-right"><strong>{product.price}</strong></td>
+                                                                                    </tr>
+                                                                        )}))
+                                                                    }
+                                                                    <h3>Order total:</h3> ${price}
                                                             </div>
                                                         </div>
                                                     </div>

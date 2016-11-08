@@ -35,6 +35,7 @@ export default class MiniCart extends React.Component {
                     }
                     <li className="divider"></li>
                     <li><Link className="text-center" to="cart/1">View Cart</Link></li>
+                    <li><Link className="text-center" to="checkout">Checkout</Link></li>
                 </ul>
             </li>
         )
