@@ -13,7 +13,7 @@ var Order = require('./db/models/order');
 var Review = require('./db/models/review');
 var OrderProduct = require('./db/models/order_product')
 
-//setting number of instances for each model 
+//setting number of instances for each model
 var numUsers = 30;
 var numCarts = 32;
 var numProducts = 10;
@@ -50,8 +50,8 @@ var randUser = () =>  {
 //generate random titles
 var randTitle = () => {
   var numWords = chance.natural({
-    min: 1,
-    max: 8
+    min: 2,
+    max: 2
   });
   return chance.sentence({words: numWords})
   .replace(/\b\w/g, function (m) {

@@ -8,10 +8,10 @@ export default class ProductList extends React.Component {
 
       return (
           <div className="row">
-              {products && products.map(product => (
-                  <ProductThumbnail key={product.id} product={product} />
-                ))
-               }
+            {products && products.map(product => (
+              <ProductThumbnail key={product.id} product={product} />
+              ))
+            }
           </div>
       )
     }
