@@ -17,6 +17,7 @@ const CartProduct = require('./cart_product');
 User.hasMany(Order);
 Product.hasMany(Review);
 Review.belongsTo(Product);
+Review.belongsTo(User);
 Order.belongsToMany(Product, {through: OrderProduct});
 Order.belongsTo(User);
 Cart.belongsToMany(Product, {through: CartProduct});

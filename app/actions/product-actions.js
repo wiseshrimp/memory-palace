@@ -25,5 +25,3 @@ export const loadProduct = (productId) => {
   }
   return thunk;
 }
-
-// export const loadReview = (reviewId)

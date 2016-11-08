@@ -20,7 +20,12 @@ const products = epilogue.resource({
   },
   include: [
     {
-      model: db.model('reviews')
+      model: db.model('reviews'),
+      include: [
+        {
+          model: db.model('users')
+        }
+      ]
     }
   ]
 })

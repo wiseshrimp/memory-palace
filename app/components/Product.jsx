@@ -10,19 +10,26 @@ export default class Product extends React.Component {
     const productImage = {
         backgroundImage: 'url(/product-images/default.jpg)',
     }
-    const starRating = {
-        width: '52%'
-    }
+
     const { product } = this.props;
 
     // find and set average of product reviews once state has updated
-    let averageRating = 0;
+    let averageRating = 0, remainder = 0, starArray = [];
     if (product.reviews){
       for (var i = 0; i < product.reviews.length; i++){
         averageRating += product.reviews[i].rating
       }
       averageRating /= product.reviews.length;
+      averageRating = Math.round(averageRating);
+      remainder = 5 - averageRating;
     }
+
+    // for (var i=0; i<averageRating; i++){
+    //   starArray[i].push(React.createElement("i", {className: "fa fa-star gold"}))
+    // }
+    // for (var i=0; i<remainder; i++){
+    //   starArray[i].push(React.createElement("i", {className: "fa fa-star-o"}))
+    // }
 
     if (product) {
       return (
@@ -36,7 +43,8 @@ export default class Product extends React.Component {
 
         				<div className="col-md-9 product-top-right">
         					<div className="product-title">{product.title}</div>
-        					<div className="product-rating"><i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star-o"></i> </div>
+        					<div className="product-rating">
+                  <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star gold"></i> <i className="fa fa-star-o"></i></div>
         					<hr />
         					<div className="product-price">${product.price}</div>
                   <div className="product-genre">{product.genre}</div>
@@ -63,23 +71,21 @@ export default class Product extends React.Component {
         		<div className="container-fluid">
         			<div className="col-md-12 product-info">
         					<ul id="myTab" className="nav nav-tabs" role="tablist">
-
         						<li className="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
         						<li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
-
         					</ul>
         				<div id="myTabContent" className="tab-content">
         						<div className="tab-pane fade in active" id="service-one">
-
         							<section className="container product-info">
         								{product.description}
         							</section>
-
         						</div>
           					<div className="tab-pane fade" id="service-three">
                     {product.reviews && product.reviews.map(review =>
                       <div key={review.id}>Rating: {review.rating}
-                      <p>{review.text}</p></div>
+                      <p>"{review.text}"</p>
+                      <p>- {review.user.name}</p>
+                      <br /></div>
                     )}
           					</div>
         				</div>
