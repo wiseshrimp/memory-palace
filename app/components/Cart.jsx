@@ -56,7 +56,7 @@ export default class Cart extends React.Component {
                             <td className="col-sm-1 col-md-1">
                               <input type="number" className="form-control" name="quantity" id="quantity" min="0" defaultValue={productQuantity} onChange={(event) => {
                                 products[i].cart_product.quantity = Number(event.target.value);
-                                this.props.changeCartQuantity({products: products});
+                                this.props.changeCartQuantity({products: products, login_user: this.props.loginUser.id});
                               }} />
                             </td>
                             <td className="col-sm-1 col-md-1 text-center"><strong>{productPrice}</strong></td>

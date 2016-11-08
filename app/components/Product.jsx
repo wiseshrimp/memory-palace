@@ -20,7 +20,7 @@ export default class Product extends React.Component {
   onQuantitySubmit(event) {
     event.preventDefault();
     this.props.addToCart(this.state);
-    console.log("THIS DOT STATE", this.state)
+    console.log(this.state)
   }
 
 
@@ -30,7 +30,7 @@ export default class Product extends React.Component {
         backgroundImage: 'url(/product-images/default.jpg)',
     }
 
-    const { product } = this.props;
+     const { product, loginUser } = this.props;
 
     // find and set average of product reviews once state has updated
     let averageRating = 0;
@@ -42,7 +42,7 @@ export default class Product extends React.Component {
       averageRating = (Math.round(averageRating * 2) / 2).toFixed(1);
     }
 
-    if (product && loginUser) {
+    if (product) {
       return (
         <div className="container-fluid">
           <div className="content-wrapper">
@@ -66,11 +66,15 @@ export default class Product extends React.Component {
                       }
                     </div>
                     <hr />
-                    <div className="btn-group cart">
-                      <button type="button" className="btn btn-success">
-                        Add to cart
-                      </button>
-                    </div>
+                    <form onSubmit={this.onQuantitySubmit} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                      <div className="input-group cart">
+                        <input placeholder="Qty" className="form-control" type="number" min="1" defaultValue="1" onChange={(event) => this.setState({quantity: Number(event.target.value)})}/>
+                        <div className="input-group-btn">
+                          <button type="submit" onClick={() => this.setState({showAdded: true, productId: product.id, user: loginUser.id})} className="btn btn-success">Add to cart</button>
+                        </div>
+                      </div>
+                      <span className="added-to-cart-alert"> {this.state.showAdded ? "✔ Added to your cart!" : ""}</span>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -92,8 +96,8 @@ export default class Product extends React.Component {
                     {product.reviews && product.reviews.map(review =>
                       <div key={review.id}>Rating: {review.rating}
                         <p>"{review.text}"</p>
-                      <p>- {review.user.name}</p>
-                      <br /></div>
+                        <p>- {review.user.name}</p>
+                        <br /></div>
                     )}
                   </div>
                 </div>
