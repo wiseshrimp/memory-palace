@@ -11,23 +11,8 @@ import CurrencyFormatter from 'currency-formatter';
 import React from 'react';
 
 export default class Cart extends React.Component {
-
-   constructor(props) {
-    super(props);
-    this.state = {
-      products: []
-    }
-    this.changeQuantitySubmit = this.changeQuantitySubmit.bind(this);
-   }
-  
-  changeQuantitySubmit(event) {
-      event.preventDefault();
-      this.props.changeQuantity(this.state);
-    }
-
     render() {
         let {products} = this.props.cart;
-        // let subtotal = products.reduce((pre,cur)=>pre+Number(cur.price));
         let subtotal = 0;
 
         products && products.forEach( e => {
@@ -51,16 +36,12 @@ export default class Cart extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-
                       {/* PRODUCT LOOP BEGINS HERE: */}
                       {products.map((product,i) => {
-
                         const productQuantity = product.cart_product.quantity;
                         const productPrice = CurrencyFormatter.format(product.price, { code: 'USD' });
                         const totalProduct = CurrencyFormatter.format((productQuantity*product.price), { code: 'USD' });
-
                         return (
-
                           <tr key={product.id}>
                             <td className="col-sm-8 col-md-6">
                               <div className="media">
@@ -71,46 +52,37 @@ export default class Cart extends React.Component {
                                 </div>
                               </div>
                             </td>
-
                             <td></td>
                             <td className="col-sm-1 col-md-1">
-
                               <input type="number" className="form-control" name="quantity" id="quantity" min="0" defaultValue={productQuantity} onChange={(event) => {
                                 products[i].cart_product.quantity = Number(event.target.value);
                                 this.props.changeCartQuantity({products: products});
                               }} />
-
-
                             </td>
                             <td className="col-sm-1 col-md-1 text-center"><strong>{productPrice}</strong></td>
                             <td className="col-sm-1 col-md-1 text-center"><strong>{totalProduct}</strong></td>
                           </tr>
-
                         )
                       })
                       }
-
                       <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
                         <td></td>
                         <td></td>
                       </tr>
                       <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
                         <td><h3>Subtotal</h3></td>
                         <td key="subtotal" className="text-right"><h3><strong>{CurrencyFormatter.format(subtotal, { code: 'USD' })}</strong></h3></td>
                       </tr>
                       <tr>
-                        <td>   </td>
-                        <td>   </td>
-
+                        <td>   </td>
+                        <td>   </td>
                         <td className="col-sm-1 col-md-1">
-
-
                         </td>
                         <td>
                           <Link to="/"><button type="button" className="btn btn-default">
@@ -118,12 +90,9 @@ export default class Cart extends React.Component {
                           </button></Link>
                         </td>
                         <td>
-                          <Link to="/checkout">
-                            <button type="button" className="btn btn-success">
+                          <button type="button" className="btn btn-success">
                             Checkout <span className="glyphicon glyphicon-play"></span>
-                            </button>
-                          </Link>
-                        </td>
+                          </button></td>
                       </tr>
                     </tbody>
                   </table>

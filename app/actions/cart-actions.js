@@ -31,4 +31,3 @@ export const changeQuantityAsync = (details) => {
     }
     return thunk;
 }
-
