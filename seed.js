@@ -186,3 +186,20 @@ var seed = () =>  {
 }
 
 module.exports = seed;
+
+var generateUsers = () => {
+  var users = doTimes(numUsers, randUser);
+  users.push(User.build({
+    name: 'Zeke Nierenberg',
+    email: 'zeke@zeke.zeke',
+    password: '123',
+    isAdmin: true
+  }));
+  users.push(User.build({
+    name: 'Omri Bernstein',
+    email: 'omri@zeke.zeke',
+    password: '123',
+    isAdmin: false
+  }));
+  return users;
+}

@@ -26,7 +26,7 @@ export default class Navbar extends React.Component {
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
-              <Link to="/" className="navbar-brand" href="#"><img src="palace.png" height="30" /></Link>
+              <Link to="/" className="navbar-brand" href="#"><img src="favicon.ico" height="30" /></Link>
             </div>
             <div className="collapse navbar-collapse">
               <ul className="nav navbar-nav">

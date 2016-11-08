@@ -31,10 +31,10 @@ export default class SearchBar extends React.Component {
               role="search"
               onSubmit={this.onSearchSubmit}>
                 <div className="input-group">
-                  <input type="text" className="form-control hidden" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
+                  <input type="text" className="form-control" placeholder="Search" name="srch-term" id="srch-term" onChange={this.onInputChange} />
                   <div className="input-group-btn">
                     <Link to={this.state.currentTerm ? `search/${this.state.currentTerm}` : '/'}>
-                    <button onClick={unhide} className="btn btn-default" type="submit">
+                    <button className="btn btn-default" type="submit">
                         <i className="glyphicon glyphicon-search" />
                       </button>
                     </Link>
@@ -49,11 +49,3 @@ export default class SearchBar extends React.Component {
 SearchBar.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
-
-function unhide() {
-  var input = document.getElementById('srch-term');
-  if (input) {
-    if (input.className === "form-control hidden") input.className = "form-control unhidden";
-    else input.className = "form-control hidden";
-  }
-}
