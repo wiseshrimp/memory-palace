@@ -62,6 +62,7 @@
     "react-router": "^3.0.0",
     "react-star-rating": "^1.4.2",
     "react-three": "^0.9.4",
+    "react-stars": "^2.1.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",

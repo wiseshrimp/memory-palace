@@ -37,6 +37,3 @@ export const addToCartAsync = (details) => {
   }
   return thunk;
 }
-
-
-// export const loadReview = (reviewId)

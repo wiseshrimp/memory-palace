@@ -59,5 +59,5 @@ export const retrieveLoggedInUser = () => dispatch => {
 export const updateUserInfo = (userCred, id) => dispatch => {
   axios.put(`/api/updateUser/${id}`, userCred)
     .then(res => dispatch(updateUser(res.data)))
-    .catch(err => console.error(`Updating user: ${userCred} unsuccesful`, err))
+    .catch(err => console.error(`Updating user: ${userCred} unsuccessful`, err))
 }

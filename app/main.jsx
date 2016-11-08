@@ -62,10 +62,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" onEnter={onEnterRetrieveLoggedInUser} onChange={(prevState, nextState) => {
-          if (nextState.location.action !== "POP") {
-            window.scrollTo(0, 0);
-          }
-        }} component={Root}>
+        if (nextState.location.action !== "POP") {
+          window.scrollTo(0, 0);
+        }
+      }} component={Root}>
         <IndexRoute component={Home} onEnter={onEnterHome} />
         <Route path='/cart/:userId' component={Cart} onEnter={onEnterUserCart} />
         <Route path='/login' component={Login} />
@@ -73,9 +73,9 @@ ReactDOM.render(
         <Route path='/products/:productId' component={ProductContainer} onEnter={onEnterLoadProduct} />
         <Route path='/orderhistory/:userId' component={OrderHistory} onEnter={onEnterOrderHistory} />
         <Route path='/genre/:genre' component={Genre} onEnter={onEnterGenre} />
-        <Route path='/users/profile' component={UserPage}/>
-        <Route path='/users/profile/edit' component={EditUserPage} />
         <Route path='/checkout' component={Checkout} />
+        <Route path='/profile' component={UserPage}/>
+        <Route path='/profile/edit' component={EditUserPage}/>
       </Route>
     </Router>
   </Provider>,

@@ -13,11 +13,34 @@ const User = db.define('users', {
 			notEmpty: true,
 		}
   },
+  imageUrl: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
+  },
+  shippingName: {
+      type: Sequelize.STRING,
+  },
+  shippingLine1: {
+      type: Sequelize.STRING,
+  },
+  shippingLine2: {
+      type: Sequelize.STRING,
+  },
+  shippingCity: {
+      type: Sequelize.STRING,
+  },
+  shippingState: {
+      type: Sequelize.STRING,
+  },
+  shippingZip: {
+      type: Sequelize.STRING,
+  },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
-
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
 	password: Sequelize.VIRTUAL
@@ -34,7 +57,7 @@ const User = db.define('users', {
           (err, result) =>
             err ? reject(err) : resolve(result))
         )
-    }    
+    }
   }
 })
 

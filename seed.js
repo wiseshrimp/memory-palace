@@ -101,8 +101,11 @@ var generateReviews = () => {
 	    rating: chance.integer({min: 1, max: 5})
    })
   	.then(createdReview => {
-  		createdReview.setProduct(chance.integer( {min:1, max:10} ) )
+  		return createdReview.setProduct(chance.integer( {min:1, max:10} ) )
   	})
+    .then(createdReview => {
+      return createdReview.setUser(chance.integer( {min:1, max:32} ))
+    })
  })
 }
 
