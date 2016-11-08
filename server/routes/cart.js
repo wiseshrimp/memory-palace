@@ -7,7 +7,7 @@ const db = require('APP/db')
 const CartProduct = db.model('cart_product')
 const Cart = db.model('cart')
 
-const customCartRoutes = require('express').Router() 
+const customCartRoutes = require('express').Router()
 
 // Custom routes go here.
 
@@ -24,10 +24,8 @@ const cart = epilogue.resource({
   ]
 })
 
-//express route to add something to cart_product 
+//express route to add something to cart_product
 customCartRoutes.post('/addProduct', (req,res,next) => {
-	console.log("HERE")
-	console.log("reqbodyuser", req.body.user)
 	Cart.findOne({
 		where: {user_id: req.body.user}
 	})
@@ -44,12 +42,12 @@ customCartRoutes.post('/addProduct', (req,res,next) => {
 });
 
 
-//update cart quantity 
+//update cart quantity
 customCartRoutes.post('/update', (req,res,next) => {
 	let cartId;
 
 	Cart.findOne({
-		where: {user_id: 1}
+		where: {user_id: req.body.login_user}
 	})
 	.then(foundCart => {
 		cartId = foundCart.id;
@@ -62,7 +60,7 @@ customCartRoutes.post('/update', (req,res,next) => {
 					product_id: e.id
 				}
 			})
-		})) 
+		}))
 	})
 	.then(() => {
 		Cart.findOne({
@@ -78,8 +76,3 @@ customCartRoutes.post('/update', (req,res,next) => {
 	})
 	.catch(next)
 });
-
-
-
-
-

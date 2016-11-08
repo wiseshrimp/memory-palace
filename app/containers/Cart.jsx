@@ -4,7 +4,8 @@ import { changeQuantityAsync } from '../actions/cart-actions';
 
 function mapStateToProps(state) {
     return {
-        cart: state.cart
+        cart: state.cart,
+        loginUser: state.loginUser
     }
 }
 
