@@ -26,7 +26,7 @@ export default class Navbar extends React.Component {
         <nav className="navbar navbar-default navbar-fixed-top">
             <div className="container-fluid">
             <div className="navbar-header">
-                <Link to="/" className="navbar-brand" href="#">MEMORY PALACE</Link>                
+                <Link to="/" className="navbar-brand" href="#">MEMORY PALACE</Link>
             </div>
             <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav">
@@ -52,13 +52,13 @@ export default class Navbar extends React.Component {
                     </ul>
                 </li>
                 </ul>
-                
+
                 <ul className="nav navbar-nav navbar-right">
                     <SearchBar />
-                    <MiniCart />        
+                    <MiniCart />
                     <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#"><span className="glyphicon glyphicon-user"></span></a>
                         <ul className="dropdown-menu">
-                            <li><a href="#">Account</a></li>
+                            <li><Link to='/profile'>Account</Link></li>
                             {(this.props.loginUser.email) ? this.triggerLogout() : null}
                         </ul>
                     </li>
@@ -66,8 +66,8 @@ export default class Navbar extends React.Component {
                 </ul>
             </div>
             </div>
-            
+
         </nav>
-        );       
+        );
     }
 }

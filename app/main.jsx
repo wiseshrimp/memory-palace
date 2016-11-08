@@ -72,8 +72,8 @@ ReactDOM.render(
         <Route path='/products/:productId' component={ProductContainer} onEnter={onEnterLoadProduct} />
         <Route path='/orderhistory/:userId' component={OrderHistory} onEnter={onEnterOrderHistory} />
         <Route path='/genre/:genre' component={Genre} onEnter={onEnterGenre} />
-        <Route path='/users/profile' component={UserPage}/>
-        <Route path='/users/profile/edit' component={EditUserPage}/>
+        <Route path='/profile' component={UserPage}/>
+        <Route path='/profile/edit' component={EditUserPage}/>
       </Route>
     </Router>
   </Provider>,

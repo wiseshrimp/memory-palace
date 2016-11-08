@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory, browserHistory } from 'react-router';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -46,13 +46,19 @@ export default class Login extends React.Component {
             password: event.target.password.value
         }
 
-        if (event.target.id === 'login-form') this.props.login(userCred);
-        else {
-            userCred.name = event.target.user_name.value;
+        if (event.target.id === 'login-form') {
+          this.props.login(userCred)
+          hashHistory.push('/')
+        } else {
+          if (event.target.user_name.value){
+            var name = event.target.user_name.value.split(' ').map(word => word[0].toUpperCase() + word.substr(1)).join(' ')
+            userCred.name = name
+          }
             this.props.registerUser(userCred);
+            hashHistory.push('/profile')
         }
     }
-    
+
     render() {
         return (
             <div className="container">
@@ -73,7 +79,7 @@ export default class Login extends React.Component {
                         <div className="panel-body">
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <form id="login-form" action="#" method="post" role="form" onSubmit={this.onUserSubmit}>
+                                    <form id="login-form" action="#" onSubmit={this.onUserSubmit} method="post" role="form">
                                         <div className="form-group">
                                             <input type="text" name="email" id="email" tabIndex="1" className="form-control" placeholder="Email Address" />
                                         </div>
@@ -83,10 +89,10 @@ export default class Login extends React.Component {
                                         <div className="form-group">
                                             <div className="row">
                                                 <div className="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" value="Log In" />
+                                                    <input type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" value="Log In"></input>
                                                 </div>
                                             </div>
-                                        </div>  
+                                        </div>
 
                                     </form>
                                     <form id="register-form" action="#" method="post" role="form" onSubmit={this.onUserSubmit}>

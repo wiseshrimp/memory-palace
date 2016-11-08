@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class UserPage extends React.Component {
   render(){
@@ -30,39 +31,40 @@ export default class UserPage extends React.Component {
                         <table className="table table-user-information">
                           <tbody>
                             <tr>
-                              <td>Date of Birth</td>
-                              <td>01/24/1988</td>
-                            </tr>
-                            <tr>
-                              <td>Gender</td>
-                              <td>Female</td>
-                            </tr>
-                            <tr>
-                              <td>Home Address</td>
-                              <td>Kathmandu,Nepal</td>
-                            </tr>
-                            <tr>
                               <td>Email</td>
                               <td>{this.props.loginUser.email}</td>
                             </tr>
                             <tr>
-                              <td>Phone Number</td>
-                              <td>123-4567-890(Landline)<br />555-4567-890(Mobile)
-                              </td>
+                              <td>Address Line 1</td>
+                              <td>{this.props.loginUser.shippingLine1}</td>
                             </tr>
-
+                            <tr>
+                              <td>Address Line 2</td>
+                              <td>{this.props.loginUser.shippingLine2}</td>
+                            </tr>
+                            <tr>
+                              <td>City</td>
+                              <td>{this.props.loginUser.shippingCity}</td>
+                            </tr>
+                            <tr>
+                              <td>State</td>
+                              <td>{this.props.loginUser.shippingState}</td>
+                            </tr>
+                            <tr>
+                              <td>Zip Code</td>
+                              <td>{this.props.loginUser.shippingZip}</td>
+                            </tr>
                           </tbody>
                         </table>
 
-                        <a href="#" className="btn btn-primary">View Orders</a>
+                        <Link to={`/orderhistory/${this.props.loginUser.id}`} className="btn btn-primary">View Orders</Link>
                       </div>
                     </div>
                   </div>
                        <div className="panel-footer">
                           <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" className="btn btn-sm btn-primary"><i className="glyphicon glyphicon-envelope"></i></a>
                           <span className="pull-right">
-                              <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" className="btn btn-sm btn-warning"><i className="glyphicon glyphicon-edit"></i></a>
-                              <a data-original-title="Remove this user" data-toggle="tooltip" type="button" className="btn btn-sm btn-danger"><i className="glyphicon glyphicon-remove"></i></a>
+                              <Link to='/profile/edit' data-original-title="Edit this user" data-toggle="tooltip" type="button" className="btn btn-sm btn-warning"><i className="glyphicon glyphicon-edit"></i></Link>
                           </span>
                         </div>
                 </div>
