@@ -26,8 +26,10 @@ const cart = epilogue.resource({
 
 //express route to add something to cart_product 
 customCartRoutes.post('/addProduct', (req,res,next) => {
+	console.log("HERE")
+	console.log("reqbodyuser", req.body.user)
 	Cart.findOne({
-		where: {user_id: 1}
+		where: {user_id: req.body.user}
 	})
 	.then(foundCart => {
 		const createCartPromise = CartProduct.create({

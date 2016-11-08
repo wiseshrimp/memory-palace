@@ -4,7 +4,8 @@ import { addToCartAsync } from '../actions/product-actions';
 
 function mapStateToProps(state){
   return {
-    product: state.product
+    product: state.product,
+    loginUser: state.loginUser
   }
 }
 

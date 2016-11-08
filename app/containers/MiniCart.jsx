@@ -3,7 +3,8 @@ import MiniCart from '../components/MiniCart';
 
 function mapStateToProps(state) {
     return {
-        cart: state.cart
+        cart: state.cart,
+        loginUser: state.loginUser
     }
 }
 

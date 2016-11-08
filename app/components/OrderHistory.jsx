@@ -6,10 +6,13 @@ import CurrencyFormatter from 'currency-formatter';
 
 export default class OrderHistory extends React.Component {
     render() {
-    	const order = this.props.orderHistory
+      const order = this.props.orderHistory
+
+      if (order.length < 1) return <h2>No recent orders</h2>
+
         return (
-        	<div>
-        		<h1>Your Order History</h1>
+          <div>
+            <h1>Your Order History</h1>
 
             <div className="container">
 
@@ -77,40 +80,47 @@ export default class OrderHistory extends React.Component {
                                 <td className="col-sm-1 col-md-1">
                                   <button type="button" className="btn btn-warning">
                                     <Link to={`/products/${product.id}`}><span className="glyphicon"></span>Write Review
-				                                        </Link></button></td>
-				                                        </tr>
+                                                </Link></button></td>
+                                                </tr>
 
-				                                )})} {/* PRODUCT LOOP ENDS */}
+                                        )})} {/* PRODUCT LOOP ENDS */}
 
-				                                    <tr>
-				                                        <td>   </td>
-				                                        <td>   </td>
-				                                        <td>   </td>
-				                                        <td><h5>Subtotal</h5></td>
-				                                        <td className="text-right"><h5><strong>$24.59</strong></h5></td>
-				                                    </tr>
-				                                    <tr>
-				                                        <td>   </td>
-				                                        <td>   </td>
-				                                        <td>   </td>
-				                                        <td><h5>Shipping</h5></td>
-				                                        <td className="text-right"><h5><strong>$6.94</strong></h5></td>
-				                                    </tr>
-				                                    <tr>
-				                                        <td>   </td>
-				                                        <td>   </td>
-				                                        <td>   </td>
-				                                        <td><h3>Total</h3></td>
-				                                        <td className="text-right"><h3><strong>$31.53</strong></h3></td>
-				                                    </tr>
-				                            </tbody>
-				                        </table>
-				                    </div>
-				                </div>
-			                </div>
-		              	)})}   {/* Repeat for each order */}
-		            </div>{/* /.container */}
-       		</div>
+                                            <tr>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td><h5>Subtotal</h5></td>
+                                                <td className="text-right"><h5><strong>{CurrencyFormatter.format(order.subTotal, {code: 'USD'})}</strong></h5></td>
+                                            </tr>
+                                              <tr>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td><h5>Tax</h5></td>
+                                                <td className="text-right"><h5><strong>{CurrencyFormatter.format(order.tax, {code: 'USD'})}</strong></h5></td>
+                                            </tr>
+                                            <tr>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td><h5>Shipping</h5></td>
+                                                <td className="text-right"><h5><strong>{CurrencyFormatter.format(order.shippingTotal, {code: 'USD'})}</strong></h5></td>
+                                            </tr>
+                                            <tr>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td>   </td>
+                                                <td><h3>Total</h3></td>
+                                                <td className="text-right"><h3><strong>{CurrencyFormatter.format(order.total, {code: 'USD'})}</strong></h3></td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </div>
+                    )})}   {/* Repeat for each order */}
+                </div>{/* /.container */}
+          </div>
         )
     }
 }

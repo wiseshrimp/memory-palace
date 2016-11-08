@@ -10,14 +10,17 @@ export default class Product extends React.Component {
     super(props);
     this.state = {
       quantity: 1,
-      productId: null
+      productId: null,
+      user: null,
+      showAdded: false
     };
     this.onQuantitySubmit = this.onQuantitySubmit.bind(this);
   }
 
   onQuantitySubmit(event) {
     event.preventDefault();
-    this.props.addToCart(this.state)
+    this.props.addToCart(this.state);
+    console.log("THIS DOT STATE", this.state)
   }
 
 
@@ -29,7 +32,8 @@ export default class Product extends React.Component {
     const starRating = {
         width: '52%'
     }
-    const { product } = this.props;
+    const { product, loginUser } = this.props;
+    console.log("********PRODUCT & LOGIN USER*******", product, loginUser)
 
     // find and set average of product reviews once state has updated
     let averageRating = 0;
@@ -40,7 +44,7 @@ export default class Product extends React.Component {
         averageRating /= product.reviews.length;
     }
 
-    if (product) {
+    if (product && loginUser) {
       return (
         <div className="container-fluid">
           <div className="content-wrapper">
@@ -69,12 +73,12 @@ export default class Product extends React.Component {
 
                     <form onSubmit={this.onQuantitySubmit} className="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                       <div className="input-group cart">
-                        <input placeholder="Qty" className="form-control" type="number" onChange={(event) => this.setState({quantity: event.target.value, productId: product.id})}/>
-                        <span className="input-group-btn">
-                          <button type="submit" className="btn btn-success">Add to cart</button>
-                        </span>
+                        <input placeholder="Qty" className="form-control" type="number" min="1" defaultValue="1" onChange={(event) => this.setState({quantity: Number(event.target.value)})}/>
+                        <div className="input-group-btn">
+                          <button type="submit" onClick={() => this.setState({showAdded: true, productId: product.id, user: loginUser.id})} className="btn btn-success">Add to cart</button>
+                        </div>
                       </div>
-                      <input type="hidden" value="cartId"/>
+                      <span className="added-to-cart-alert"> {this.state.showAdded ? "✔ Added to your cart!" : ""}</span>
                     </form>
 
 
@@ -86,7 +90,7 @@ export default class Product extends React.Component {
             <div className="container-fluid">
               <div className="col-md-12 product-info">
                 <ul id="myTab" className="nav nav-tabs" role="tablist">
-                  <li className="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+                  <li className="active"><a href="#service-one" data-toggle="tab">DESCRIPTION HELLO</a></li>
                   <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
                 </ul>
                 <div id="myTabContent" className="tab-content">

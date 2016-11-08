@@ -119,7 +119,10 @@ var generateOrders = (users) => {
       shippingCity: chance.city(),
       shippingState: chance.state(),
       shippingZip: chance.zip(),
-      shippingTotal: 6.95
+      shippingTotal: 6.95,
+      tax: 1.95,
+      total: 17.38,
+      subTotal: 13.50
   	})
   	.then(createdOrder => {
   		return Promise.all([createdOrder.setUser(user), createdOrder])
