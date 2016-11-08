@@ -125,3 +125,7 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.added-to-cart-alert {
+	color: 	#008000;
+}

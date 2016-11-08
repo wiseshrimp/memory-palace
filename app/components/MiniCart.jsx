@@ -5,10 +5,11 @@ import { Link } from 'react-router';
 export default class MiniCart extends React.Component {
     render() {
         let {products} = this.props.cart;
+        let {loginUser} = this.props;
 
         return (
             <li className="dropdown">
-                <Link to="/cart/1" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <Link to={`/cart/${loginUser.id}`} className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     <span className="glyphicon glyphicon-shopping-cart"></span>
                 </Link>
                 <ul className="dropdown-menu dropdown-cart" role="menu">
@@ -34,7 +35,8 @@ export default class MiniCart extends React.Component {
                             : (<span id="empty-mini-cart">Start adding memories to your cart!</span>)
                     }
                     <li className="divider"></li>
-                    <li><Link className="text-center" to="cart/1">View Cart</Link></li>
+                    <li><Link className="text-center" to={`/cart/${loginUser.id}`} >View Cart</Link></li>
+                    <li><Link className="text-center" to="checkout">Checkout</Link></li>
                 </ul>
             </li>
         )

@@ -20,6 +20,7 @@ import OrderHistory from './containers/OrderHistory';
 import Genre from './containers/Genre';
 import UserPage from './containers/UserPage';
 import EditUserPage from './containers/EditUserPage';
+import Checkout from './containers/Checkout';
 
 import { loadCart } from './actions/cart-actions';
 import { fetchSearchRequest } from './actions/searchbar-actions';
@@ -73,7 +74,8 @@ ReactDOM.render(
         <Route path='/orderhistory/:userId' component={OrderHistory} onEnter={onEnterOrderHistory} />
         <Route path='/genre/:genre' component={Genre} onEnter={onEnterGenre} />
         <Route path='/users/profile' component={UserPage}/>
-        <Route path='/users/profile/edit' component={EditUserPage}/>
+        <Route path='/users/profile/edit' component={EditUserPage} />
+        <Route path='/checkout' component={Checkout} />
       </Route>
     </Router>
   </Provider>,

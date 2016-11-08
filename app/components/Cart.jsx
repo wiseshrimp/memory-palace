@@ -11,6 +11,20 @@ import CurrencyFormatter from 'currency-formatter';
 import React from 'react';
 
 export default class Cart extends React.Component {
+
+   constructor(props) {
+    super(props);
+    this.state = {
+      products: []
+    }
+    this.changeQuantitySubmit = this.changeQuantitySubmit.bind(this);
+   }
+  
+  changeQuantitySubmit(event) {
+      event.preventDefault();
+      this.props.changeQuantity(this.state);
+    }
+
     render() {
         let {products} = this.props.cart;
         // let subtotal = products.reduce((pre,cur)=>pre+Number(cur.price));
@@ -104,9 +118,12 @@ export default class Cart extends React.Component {
                           </button></Link>
                         </td>
                         <td>
-                          <button type="button" className="btn btn-success">
+                          <Link to="/checkout">
+                            <button type="button" className="btn btn-success">
                             Checkout <span className="glyphicon glyphicon-play"></span>
-                          </button></td>
+                            </button>
+                          </Link>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
