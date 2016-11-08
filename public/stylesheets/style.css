@@ -5,6 +5,16 @@ body {
     padding: 70px;
 }
 
+.main-header {
+    text-align: center;
+    padding: 5px;
+    text-shadow: 2px 2px 2px #bbd0ed;
+}
+
+.navbar {
+    opacity: 0.85
+}
+
 .sidebar-nav {
     padding: 9px 0;
 }
@@ -57,6 +67,7 @@ body {
   /* Set the fixed height of the footer here */
   height: 50px;
   background-color: #f5f5f5;
+  opacity: 0.85
 }
 
 .text-muted {
@@ -90,4 +101,12 @@ body {
 
 .product-icon{
   margin: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.unhidden {
+    display: block;
 }

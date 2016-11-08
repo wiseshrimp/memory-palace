@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-stars';
 
-
 // TO DO: add user association to reviews so that name of reviewer can show up next to reviews
 // add integration of averageRating
 

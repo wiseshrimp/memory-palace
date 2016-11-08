@@ -4311,6 +4311,10 @@ react-star-rating@^1.4.2:
     react-addons-test-utils "^0.14.2"
     react-dom "^0.14.2"
 
+react-stars@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-stars/-/react-stars-2.1.0.tgz#b3fdd63c888b86fbf634fc15abbed2ffb7db07b1"
+
 react-three:
   version "0.9.4"
   resolved "https://registry.yarnpkg.com/react-three/-/react-three-0.9.4.tgz#ffeedfb54aca67ed8d8865203523fbc0ee86a22b"
