@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
   return {
-    changeQuantity: function(details) {
+    changeCartQuantity: function(details) {
     	dispatch(changeQuantityAsync(details))
     }
   }

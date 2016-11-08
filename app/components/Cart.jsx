@@ -11,26 +11,18 @@ import CurrencyFormatter from 'currency-formatter';
 import React from 'react';
 
 export default class Cart extends React.Component {
-   constructor(props) {
-    super(props);
-    this.state = {
-      products: []
-    }
-    this.changeQuantitySubmit = this.changeQuantitySubmit.bind(this);
-  }
-
-
-  changeQuantitySubmit(event) {
-      event.preventDefault();
-      this.props.changeQuantity(this.state);
-    }
-
     render() {
         let {products} = this.props.cart;
+        // let subtotal = products.reduce((pre,cur)=>pre+Number(cur.price));
+        let subtotal = 0;
+
+        products && products.forEach( e => {
+          subtotal += Number(e.price) * Number(e.cart_product.quantity)
+        });
         return (
           <div>
             <h1> Your Cart </h1>
-            <div className="container">
+            {products ? (<div className="container">
               <div className="row">
                 <div className="col-sm-12 col-md-10 col-md-offset-1">
                   <table className="table table-hover">
@@ -47,14 +39,14 @@ export default class Cart extends React.Component {
                     <tbody>
 
                       {/* PRODUCT LOOP BEGINS HERE: */}
-                      {products && products.map((product,i) => {
+                      {products.map((product,i) => {
 
-                          const productQuantity = product.cart_product.quantity;
-                          const productPrice = CurrencyFormatter.format(product.price, { code: 'USD' });
-                          const totalProduct = CurrencyFormatter.format((productQuantity*product.price), { code: 'USD' });
+                        const productQuantity = product.cart_product.quantity;
+                        const productPrice = CurrencyFormatter.format(product.price, { code: 'USD' });
+                        const totalProduct = CurrencyFormatter.format((productQuantity*product.price), { code: 'USD' });
 
                         return (
-                  
+
                           <tr key={product.id}>
                             <td className="col-sm-8 col-md-6">
                               <div className="media">
@@ -65,15 +57,15 @@ export default class Cart extends React.Component {
                                 </div>
                               </div>
                             </td>
-                        
+
                             <td></td>
                             <td className="col-sm-1 col-md-1">
 
-                                  <input type="number" className="form-control" name="quantity" id="quantity" min="0" defaultValue={productQuantity} onChange={(event) => {
-                                    products[i].cart_product.quantity = Number(event.target.value);
-                                    this.setState({products: products});
-                                  }} />
-                                
+                              <input type="number" className="form-control" name="quantity" id="quantity" min="0" defaultValue={productQuantity} onChange={(event) => {
+                                products[i].cart_product.quantity = Number(event.target.value);
+                                this.props.changeCartQuantity({products: products});
+                              }} />
+
 
                             </td>
                             <td className="col-sm-1 col-md-1 text-center"><strong>{productPrice}</strong></td>
@@ -88,38 +80,29 @@ export default class Cart extends React.Component {
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td><h5>Subtotal</h5></td>
-                        <td className="text-right"><h5><strong>$24.59</strong></h5></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                       <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td className="text-right"><h5><strong>$6.94</strong></h5></td>
+                        <td><h3>Subtotal</h3></td>
+                        <td key="subtotal" className="text-right"><h3><strong>{CurrencyFormatter.format(subtotal, { code: 'USD' })}</strong></h3></td>
                       </tr>
                       <tr>
                         <td>   </td>
                         <td>   </td>
-                        <td>   </td>
-                        <td><h3>Total</h3></td>
-                        <td className="text-right"><h3><strong>$31.53</strong></h3></td>
-                      </tr>
-                      <tr>
-                        <td>   </td>
-                        <td>   </td>
-                    
-                          <td className="col-sm-1 col-md-1">
-                            
-                                <button type="button" className="btn btn-info" onClick={this.changeQuantitySubmit}>
-                                  Update
-                                </button>
-                            
-                            </td>
+
+                        <td className="col-sm-1 col-md-1">
+
+
+                        </td>
                         <td>
-                          <button type="button" className="btn btn-default">
+                          <Link to="/"><button type="button" className="btn btn-default">
                             <span className="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                          </button></td>
+                          </button></Link>
+                        </td>
                         <td>
                           <button type="button" className="btn btn-success">
                             Checkout <span className="glyphicon glyphicon-play"></span>
@@ -129,7 +112,7 @@ export default class Cart extends React.Component {
                   </table>
                 </div>
               </div>
-            </div>
+            </div>):(<div>The Cart is Empty</div>)}
           </div>
 
         )
