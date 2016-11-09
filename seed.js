@@ -128,6 +128,22 @@ var generateProducts = () => {
     genre: "feel-good",
     imageUrl: "product-images/coconut.png"
   }))
+    
+  products.push(Product.create({
+    title: "sand dunes in namibia",
+    price: 9.55,
+    description: "Come experience Sosussvlei, home to the largest sand dunes in the world. Come see animals, roll down sand dunes, and campout with Paul, Diana, and Adrian.",
+    genre: "feel-good",
+    imageUrl: "product-images/sand-dunes.png"
+  }))
+    
+  products.push(Product.create({
+    title: "learning react-redux",
+    price: 18.33,
+    description: "It's kind of like ripping off your skin with a pencil eraser but in a kind of enjoyable way. By the end of this magical experience, you will be able to this.setState({kill: me})",
+    genre: "horror",
+    imageUrl: "product-images/react.png"
+  }))  
   return products;
 }
 
