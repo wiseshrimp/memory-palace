@@ -165,6 +165,34 @@ var generateProducts = () => {
     genre: "mystery",
     imageUrl: "product-images/ganjaacid.png"
   }))
+    products.push(Product.create({
+    title: "Dashing through the Jonas",
+    price: 6.50,
+    description: "After the infamous January 2016 blizzard JONAS, a couple takes a walk through snow-covered car-free streets. It's like super romantic and pretty awesome.",
+    genre: "romance",
+    imageUrl: "product-images/jonas.png"
+  }))
+   products.push(Product.create({
+    title: "Fantastic Ferry Ride",
+    price: 5.95,
+    description: "We decided to jump on the east river ferry on a quiet Thursday night. Little did we know we had just purchased a $4 ticket to relive the Sandra Bullock movie - Speed (sans bomb). The ferry driver was blasting rock music on the deck as he sped down the east river at speeds I am pretty sure are illegal for the ferry. All of us, holding on for our dear lives as he Fast-and-the-Furios Six-Tokyo-drifted to each port. ",
+    genre: "thriller",
+    imageUrl: "product-images/fantastic-ferry-ride.png"
+  }))
+    products.push(Product.create({
+    title: "Mom Wears Black To My Wedding",
+    price: 100.10,
+    description: "I head to the wedding venue early with friends to get ready. My mother shows up to the most important day of my life wearing the most taboo color a mother could wear on this day -- black. Cue Bridezilla and Mommazilla. The most delicious drama ensues. Grab your popcorn for this one folks!",
+    genre: "drama",
+    imageUrl: "product-images/mom-wears-black.png"
+  }))
+    products.push(Product.create({
+    title: "My first Nutella Cone",
+    price: 8.50,
+    description: "A bright, beautiful, 20-something girl tries her first $10 ice cream cone in NYC. It's a confusing experience.",
+    genre: "mystery",
+    imageUrl: "product-images/nutella-cone.png"
+  }))
 
   return products;
 }
