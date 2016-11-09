@@ -14,11 +14,11 @@ var Review = require('./db/models/review');
 var OrderProduct = require('./db/models/order_product')
 
 //setting number of instances for each model
-var numUsers = 30;
-var numCarts = 32;
+var numUsers = 10;
+var numCarts = 12;
 var numProducts = 10;
-var numReviews = 40;
-var numOrders = 30;
+var numReviews = 50;
+var numOrders = 100;
 
 var emails = chance.unique(chance.email, numUsers);
 
@@ -206,10 +206,10 @@ var generateReviews = () => {
 	    rating: chance.integer({min: 1, max: 5})
    })
   	.then(createdReview => {
-  		return createdReview.setProduct(chance.integer( {min:1, max:10} ) )
+  		return createdReview.setProduct(chance.integer( {min:1, max:14} ) )
   	})
     .then(createdReview => {
-      return createdReview.setUser(chance.integer( {min:1, max:32} ))
+      return createdReview.setUser(chance.integer( {min:1, max:12} ))
     })
  })
 }
@@ -236,8 +236,8 @@ var generateOrders = (users) => {
   		return Promise.all([createdOrder.setUser(user), createdOrder])
   	})
   	.spread((usersOrder, createdOrder) => {
-  		var prodId = chance.integer({min:1, max:5});
-  		return Promise.all([createdOrder.setProducts(prodId), createdOrder.id, prodId])
+  		var prodId = chance.integer({min:1, max:13});
+  		return Promise.all([createdOrder.addProducts(prodId, prodId+1), createdOrder.id, prodId])
   	})
   	.spread((orderWithProduct, createdOrderId, prodId) => {
   		return OrderProduct.findOne({
@@ -260,6 +260,19 @@ var generateOrders = (users) => {
  })
 }
 
+var addOrderToElliot = () => {
+  return Order.findAll({where: {
+    user_id: 9
+    }
+  })
+  .then(elliotOrders => {
+		var prodId = chance.integer({min:1, max:13});
+    return Promise.all(elliotOrders.map(order => {
+      order.addProduct(prodId)
+    }))
+  })
+}
+
 //generate random cart instances
 // sets products using belongsToMany through table (cart_product)
 //sets user using Cart.belongsToUser
@@ -267,7 +280,7 @@ var generateCart = () => {
 	return doTimes(numCarts, function(){
 		return Cart.create({})
 		.then(builtCart => Promise.all([builtCart.setUser(builtCart.id), builtCart]) )
-		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 10} ) ) )
+		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 14} ) ) )
 	})
 }
 
@@ -287,6 +300,7 @@ var seed = () =>  {
   .then(generateCart)
   .then(generateProducts)
   .then(generateReviews)
+  .then(addOrderToElliot)
   .catch(err => console.error(err))
 }
 
