@@ -33,14 +33,10 @@ export default class Navbar extends React.Component {
                 <li className="dropdown">
                   <a data-toggle="dropdown" className="dropdown-toggle" href="#">explore <b className="caret"></b></a>
                   <ul className="dropdown-menu">
-                    <li>
-                      <Link to="/genre/horror" id="horror">horror <i className="fa fa-caret-right"></i></Link>
-                      <ul className="dropdown-menu sub-menu">
-                        <li><a href="#">bad horror</a></li>
-                        <li><a href="#">foreign horror</a></li>
-                        <li><a href="#">cannibal horror</a></li>
-                      </ul>
-                    </li>
+                    <li><Link to="/genre/drama" id="drama">drama</Link></li>
+                    <li><Link to="/genre/thriller" id="thriller">thriller</Link></li>  
+                    <li><Link to="/genre/mystery" id="mystery">mystery</Link></li>  
+                    <li><Link to="/genre/horror" id="horror">horror</Link></li>
                     <li><Link to="/genre/feel-good" id="feel-good">feel-good</Link></li>
                     <li><Link to="/genre/romance" id="romance">romance</Link></li>
                   </ul>

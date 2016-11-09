@@ -100,6 +100,23 @@ var generateProducts = () => {
     genre: "comedy",
     imageUrl: "product-images/bros.jpg"
   }))
+      
+  products.push(Product.create({
+    title: "Learning how to ride a bike at 21",
+    price: chance.floating({min: 1, max: 200, fixed: 2}),
+    description: 'A grown, clumsy woman rents a CitiBike and learns how to ride a bike in a Rite Aid parking lot. Does that sound like a thriller or what?',
+    genre: "thriller",
+    imageUrl: "product-images/sue-2.png"
+  }))
+    
+   products.push(Product.create({
+    title: "Getting high",
+    price: 4.20,
+    description: "All out of that Mary Jane? Get a virtual toking experience with the master Chief Keef himself!",
+    genre: "feel-good",
+    imageUrl: "product-images/chief-keef.jpg"
+  }))   
+
   return products;
 }
 

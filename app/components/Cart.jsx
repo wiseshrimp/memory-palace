@@ -90,9 +90,9 @@ export default class Cart extends React.Component {
                           </button></Link>
                         </td>
                         <td>
-                          <button type="button" className="btn btn-success">
+                          <Link to="/checkout"><button type="button" className="btn btn-success">
                             Checkout <span className="glyphicon glyphicon-play"></span>
-                          </button></td>
+                          </button></Link></td>
                       </tr>
                     </tbody>
                   </table>

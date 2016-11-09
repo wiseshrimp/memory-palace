@@ -1,11 +1,14 @@
 @import url('product.css');
 @import url('userpage.css');
 
+body {
+    padding: 70px;
+}
 
 .main-header {
     text-align: center;
     padding: 5px;
-    text-shadow: 2px 2px 2px #bbd0ed;
+    text-shadow: 2px 2px 2px #ffc9f5;
 }
 
 .product-thumbnail-header {
