@@ -92,6 +92,10 @@ body {
     color: darkgray;
 }
 
+#footer-link:hover {
+    color: #ffc9f5;
+}
+
 .text-muted {
     margin: 15px 0;
 }
@@ -153,11 +157,6 @@ body {
     text-shadow: black 0.3em 0.3em 0.3em;
     opacity: .9;
 }
-
-
-
-
-
 
 
 
