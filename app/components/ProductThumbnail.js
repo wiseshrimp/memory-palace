@@ -6,7 +6,7 @@ import StarRating from './StarRating'
 const ProductThumbnail = ({product}) => (
   <div className="col-sm-6 col-md-3">
     <div className="thumbnail clearfix">
-      <Link to={`products/${product.id}`}><img src={ product.imageUrl} /></Link>
+      <Link to={`products/${product.id}`}><img className="thumbnail-image" src={ product.imageUrl} /></Link>
       <div className="caption">
         <h3 className="product-thumbnail-header"><Link to={`products/${product.id}`}>{product.title}</Link></h3>
         <StarRating product={product} />

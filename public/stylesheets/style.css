@@ -20,6 +20,14 @@ body {
     text-shadow: 2px 2px 2px #ffc9f5;
 }
 
+.thumbnail {
+    height: 500px;
+}
+
+.thumbnail-image:hover {
+    opacity: 0.8
+}
+
 .navbar {
     opacity: 0.85
 }
