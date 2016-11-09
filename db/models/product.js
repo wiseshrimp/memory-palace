@@ -22,7 +22,7 @@ var Product = db.define('products', {
         defaultValue: 'product-images/default.jpg'
     },
     genre: {
-        type: Sequelize.ENUM("romance", "horror", "feel-good")
+        type: Sequelize.ENUM("romance", "horror", "feel-good", "comedy", "mystery", "thriller", "drama")
     }
 },
 {

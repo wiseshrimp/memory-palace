@@ -33,7 +33,7 @@ var doTimes = (n, fn) => {
 
 //generate random genre instances
 var randGenre =() => {
-  var genres = ["romance", "horror", "feel-good"];
+  var genres = ["romance", "horror", "feel-good", "comedy", "mystery", "thriller", "drama"];
   return chance.pick(genres);
 }
 
@@ -65,8 +65,8 @@ var randTitle = () => {
 var generateUsers = () => {
   var users = doTimes(numUsers, randUser);
   users.push(User.build({
-    name: 'Zeke Nierenberg',
-    email: 'zeke@zeke.zeke',
+    name: 'Elliot McNary',
+    email: 'elliot@elliotiscool.com',
     password: '123',
     isAdmin: true
   }));
@@ -81,15 +81,26 @@ var generateUsers = () => {
 
 // generates random products
 // returns array of resolved promises which are passed to generateReviews() in the seed func
+var randProduct = () =>  {
+  return Product.create({
+    title: randTitle(),
+    price: chance.floating({min: 1, max: 200, fixed: 2}),
+    description: 'The happiest day of your life',
+    genre: randGenre()
+  })
+}
+
+// ENTER MEMORIES HERE; add your images to public/product-images
 var generateProducts = () => {
-  return doTimes(numProducts, function (){
-  	return Product.create({
-	    title: randTitle(),
-	    price: chance.floating({min: 1, max: 200, fixed: 2}),
-	    description: 'The happiest day of your life',
-	    genre: randGenre()
-   })
- })
+  var products = doTimes(numProducts, randProduct);
+  products.push(Product.create({
+    title: "first bike ride",
+    price: chance.floating({min: 1, max: 200, fixed: 2}),
+    description: 'I was terrible and needed training wheels',
+    genre: "comedy",
+    imageUrl: "product-images/bros.jpg"
+  }))
+  return products;
 }
 
 
