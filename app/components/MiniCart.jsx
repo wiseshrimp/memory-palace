@@ -25,9 +25,6 @@ export default class MiniCart extends React.Component {
                                                 <span>${product.price}</span>
                                             </span>
                                         </span>
-                                        <span className="item-right">
-                                            <button className="btn btn-xs btn-danger pull-right">Delete</button>
-                                        </span>
                                     </span>
                                 </li> 
                             )
