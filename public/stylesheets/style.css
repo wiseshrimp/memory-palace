@@ -77,7 +77,7 @@ body {
 .footer {
   position: fixed;
   text-align: center;
-  padding:5px;
+  padding:10px;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -85,6 +85,11 @@ body {
   height: 50px;
   background-color: #f5f5f5;
   opacity: 0.85
+}
+
+#footer-link {
+    text-decoration: none;
+    color: darkgray;
 }
 
 .text-muted {

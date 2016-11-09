@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import Root from './components/Root';
 import Home from './components/Home';
 import Login from './containers/Login';
+import HowItWorks from './components/HowItWorks';
 
 import Cart from './containers/Cart';
 import ProductContainer from './containers/Product';
@@ -75,7 +76,8 @@ ReactDOM.render(
         <Route path='/genre/:genre' component={Genre} onEnter={onEnterGenre} />
         <Route path='/checkout' component={Checkout} />
         <Route path='/profile' component={UserPage}/>
-        <Route path='/profile/edit' component={EditUserPage}/>
+        <Route path='/profile/edit' component={EditUserPage} />
+        <Route path='/info' component={HowItWorks} />
       </Route>
     </Router>
   </Provider>,

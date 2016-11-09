@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Footer extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class Footer extends React.Component {
     render() {
         return (
         <footer className="footer">
-                <p className="text-muted">NO REAL MEMORIES ARE BEING MONETIZED (?)</p>
+            <Link id="footer-link" to="/info">FAQ</Link>
         </footer>
         )
     }
