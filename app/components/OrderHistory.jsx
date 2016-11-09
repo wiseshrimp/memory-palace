@@ -85,34 +85,7 @@ export default class OrderHistory extends React.Component {
 
                                         )})} {/* PRODUCT LOOP ENDS */}
 
-                                            <tr>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td><h5>Subtotal</h5></td>
-                                                <td className="text-right"><h5><strong>{CurrencyFormatter.format(order.subTotal, {code: 'USD'})}</strong></h5></td>
-                                            </tr>
-                                              <tr>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td><h5>Tax</h5></td>
-                                                <td className="text-right"><h5><strong>{CurrencyFormatter.format(order.tax, {code: 'USD'})}</strong></h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td><h5>Shipping</h5></td>
-                                                <td className="text-right"><h5><strong>{CurrencyFormatter.format(order.shippingTotal, {code: 'USD'})}</strong></h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td>   </td>
-                                                <td><h3>Total</h3></td>
-                                                <td className="text-right"><h3><strong>{CurrencyFormatter.format(order.total, {code: 'USD'})}</strong></h3></td>
-                                            </tr>
+                                            
                                     </tbody>
                                 </table>
                             </div>
