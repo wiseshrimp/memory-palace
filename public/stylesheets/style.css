@@ -1,10 +1,6 @@
 @import url('product.css');
 @import url('userpage.css');
 
-body {
-    padding: 70px;
-    background-color: #ffc9f5;
-}
 
 .main-header {
     text-align: center;
@@ -120,3 +116,31 @@ body {
 .unhidden {
     display: block;
 }
+
+.add-padding{
+  padding: 70px;
+}
+
+.btn-primary {
+  background-color: #23284f!important;
+  border-color: #23284f!important;
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url('../space.jpg');
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+    opacity: .9;
+}
+
+
+
+
+
+
+
+
