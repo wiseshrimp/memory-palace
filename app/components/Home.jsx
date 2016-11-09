@@ -9,7 +9,7 @@ export default class Home extends React.Component {
 		      <div className="container">
 		        <h1>Memories like you've never remembered...</h1>
 		        <p></p>
-		        <p><a class="btn btn-primary btn-lg" href="#" role="button">BROWSE MEMORIES »</a></p>
+		        <p><a className="btn btn-primary btn-lg" href="#" role="button">BROWSE MEMORIES »</a></p>
 		      </div>
 		    </div>
 	        <div className="add-padding">

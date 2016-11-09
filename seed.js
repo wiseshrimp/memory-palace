@@ -92,15 +92,7 @@ var randProduct = () =>  {
 
 // ENTER MEMORIES HERE; add your images to public/product-images
 var generateProducts = () => {
-  var products = doTimes(numProducts, randProduct);
-  products.push(Product.create({
-    title: "first bike ride",
-    price: chance.floating({min: 1, max: 200, fixed: 2}),
-    description: 'I was terrible and needed training wheels',
-    genre: "comedy",
-    imageUrl: "product-images/bros.jpg"
-  }))
-      
+  var products = doTimes(0, randProduct);
   products.push(Product.create({
     title: "Learning how to ride a bike at 21",
     price: chance.floating({min: 1, max: 200, fixed: 2}),
@@ -108,15 +100,34 @@ var generateProducts = () => {
     genre: "thriller",
     imageUrl: "product-images/sue-2.png"
   }))
-    
    products.push(Product.create({
-    title: "Getting high",
+    title: "Getting high with Chief Keef",
     price: 4.20,
     description: "All out of that Mary Jane? Get a virtual toking experience with the master Chief Keef himself!",
     genre: "feel-good",
     imageUrl: "product-images/chief-keef.jpg"
-  }))   
-
+  }))
+  products.push(Product.create({
+    title: "Sealab Halloween Show 2014",
+    price: 60,
+    description: 'We played a house show on Halloween. I dressed up as funky Uncle Sam (Funkle Sam), my drummer was Spider-Man, and my singer was Tyrone Biggums. The wig made it unbearably hot and sweaty, and my glasses kept sliding off of my face. During our encore song, the lights went out and everyone lost their shit. Amazing vibes.',
+    genre: "feel-good",
+    imageUrl: "product-images/spidey.png"
+  }))
+  products.push(Product.create({
+    title: "First encounter with a Lion",
+    price: 80,
+    description: "My first visit to a petting zoo in Sri Lanka. There was a section where you could pet lion cubs. I was too afraid to touch them, but my brother was much braver. You could also stick your head inside an adult lion's open mouth. About a week later, the zoo was shut down because someone got brutally mauled.",
+    genre: "horror",
+    imageUrl: "product-images/lions.png"
+  }))
+  products.push(Product.create({
+    title: "Sippin' on that sweet coconut",
+    price: 20.50,
+    description: "Drinking a delicious coconut on the side of the road",
+    genre: "feel-good",
+    imageUrl: "product-images/coconut.png"
+  }))
   return products;
 }
 
@@ -129,7 +140,7 @@ var generateReviews = () => {
 	    rating: chance.integer({min: 1, max: 5})
    })
   	.then(createdReview => {
-  		return createdReview.setProduct(chance.integer( {min:1, max:10} ) )
+  		return createdReview.setProduct(chance.integer( {min:1, max:5} ) )
   	})
     .then(createdReview => {
       return createdReview.setUser(chance.integer( {min:1, max:32} ))
@@ -159,7 +170,7 @@ var generateOrders = (users) => {
   		return Promise.all([createdOrder.setUser(user), createdOrder])
   	})
   	.spread((usersOrder, createdOrder) => {
-  		var prodId = chance.integer({min:1, max:10});
+  		var prodId = chance.integer({min:1, max:5});
   		return Promise.all([createdOrder.setProducts(prodId), createdOrder.id, prodId])
   	})
   	.spread((orderWithProduct, createdOrderId, prodId) => {
@@ -190,7 +201,7 @@ var generateCart = () => {
 	return doTimes(numCarts, function(){
 		return Cart.create({})
 		.then(builtCart => Promise.all([builtCart.setUser(builtCart.id), builtCart]) )
-		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 10} ) ) )
+		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 5} ) ) )
 	})
 }
 
