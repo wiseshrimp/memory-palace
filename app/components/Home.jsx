@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductList from '../containers/ProductList';
+import {Link} from 'react-router'
 
 export default class Home extends React.Component {
     render() {
@@ -9,7 +10,7 @@ export default class Home extends React.Component {
 		      <div className="container">
 		        <h1>Memories like you've never remembered...</h1>
 		        <p></p>
-		        <p><a className="btn btn-primary btn-lg" href="#" role="button">BROWSE MEMORIES »</a></p>
+		        <p><Link className="btn btn-primary btn-lg" to={`/genre/feel-good`} role="button">BROWSE FEEL-GOOD »</Link></p>
 		      </div>
 		    </div>
 	        <div className="add-padding">

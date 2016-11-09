@@ -22,6 +22,7 @@ import Genre from './containers/Genre';
 import UserPage from './containers/UserPage';
 import EditUserPage from './containers/EditUserPage';
 import Checkout from './containers/Checkout';
+import Thankyou from './components/ThankYou'
 
 import { loadCart } from './actions/cart-actions';
 import { fetchSearchRequest } from './actions/searchbar-actions';
@@ -78,6 +79,7 @@ ReactDOM.render(
         <Route path='/profile' component={UserPage}/>
         <Route path='/profile/edit' component={EditUserPage} />
         <Route path='/info' component={HowItWorks} />
+        <Route path='/order/thankyou' component={Thankyou} />
       </Route>
     </Router>
   </Provider>,
