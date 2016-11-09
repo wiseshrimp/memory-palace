@@ -24,12 +24,13 @@ export default class Product extends React.Component {
 
 
   render() {
-    // format for inline styling in React
-    const productImage = {
-        backgroundImage: 'url(/product-images/default.jpg)',
-    }
 
      const { product, loginUser } = this.props;
+
+     // format for inline styling in React
+     const productImage = {
+         backgroundImage: `url(/${product.imageUrl})`,
+     }
 
     // find and set average of product reviews once state has updated
 
