@@ -94,11 +94,25 @@ var randProduct = () =>  {
 var generateProducts = () => {
   var products = doTimes(numProducts, randProduct);
   products.push(Product.create({
-    title: "first bike ride",
-    price: chance.floating({min: 1, max: 200, fixed: 2}),
-    description: 'I was terrible and needed training wheels',
-    genre: "comedy",
-    imageUrl: "product-images/bros.jpg"
+    title: "Sealab Halloween Show 2014",
+    price: 60,
+    description: 'We played a house show on Halloween. I dressed up as funky Uncle Sam (Funkle Sam), my drummer was Spider-Man, and my singer was Tyrone Biggums. The wig made it unbearably hot and sweaty, and my glasses kept sliding off of my face. During our encore song, the lights went out and everyone lost their shit. Amazing vibes.',
+    genre: "feel-good",
+    imageUrl: "product-images/spidey.png"
+  }))
+  products.push(Product.create({
+    title: "First encounter with a Lion",
+    price: 80,
+    description: "My first visit to a petting zoo in Sri Lanka. There was a section where you could pet lion cubs. I was too afraid to touch them, but my brother was much braver. You could also stick your head inside an adult lion's open mouth. About a week later, the zoo was shut down because someone got brutally mauled.",
+    genre: "horror",
+    imageUrl: "product-images/lion.jpg"
+  }))
+  products.push(Product.create({
+    title: "Sippin' on that sweet sweet coconut",
+    price: 20.50,
+    description: "Drinking a delicious coconut on the side of the road",
+    genre: "feel-good",
+    imageUrl: "product-images/coconut.png"
   }))
   return products;
 }
