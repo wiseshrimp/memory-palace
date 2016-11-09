@@ -18,8 +18,20 @@ export default class Product extends React.Component {
 
   onQuantitySubmit(event) {
     event.preventDefault();
-    this.props.addToCart(this.state);
-    console.log(this.state)
+    let addOrUpdate = true; // true if add
+    this.props.cart.products && this.props.cart.products.forEach((e,i) => {
+      if (e.id === this.state.productId){
+        console.log("EVENT", event.target.value);
+        this.props.cart.products[i].cart_product.quantity += this.state.quantity;
+        addOrUpdate = false;
+      }
+      });
+
+    if (addOrUpdate){
+      this.props.addToCart(this.state)
+    } else {
+      this.props.updateQuantity({products: this.props.cart.products, login_user: this.state.user})
+    }
   }
 
 

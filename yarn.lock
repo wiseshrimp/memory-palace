@@ -1874,16 +1874,6 @@ fbjs@^0.6.1:
     ua-parser-js "^0.7.9"
     whatwg-fetch "^0.9.0"
 
-fbjs@^0.7.0:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.7.2.tgz#4cf9a389aa23dbdfa2aed858e673c9b1b3ee0e0f"
-  dependencies:
-    core-js "^1.0.0"
-    isomorphic-fetch "^2.1.1"
-    loose-envify "^1.0.0"
-    promise "^7.1.1"
-    ua-parser-js "^0.7.9"
-
 fbjs@^0.8.4:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.5.tgz#f69ba8a876096cb1b9bffe4d7c1e71c19d39d008"
@@ -4314,13 +4304,6 @@ react-star-rating@^1.4.2:
 react-stars@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-stars/-/react-stars-2.1.0.tgz#b3fdd63c888b86fbf634fc15abbed2ffb7db07b1"
-
-react-three:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/react-three/-/react-three-0.9.4.tgz#ffeedfb54aca67ed8d8865203523fbc0ee86a22b"
-  dependencies:
-    fbjs "^0.7.0"
-    object-assign "^4.0.1"
 
 react@^0.14.2:
   version "0.14.8"
