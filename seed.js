@@ -17,7 +17,7 @@ var OrderProduct = require('./db/models/order_product')
 var numUsers = 30;
 var numCarts = 32;
 var numProducts = 10;
-var numReviews = 20;
+var numReviews = 40;
 var numOrders = 30;
 
 var emails = chance.unique(chance.email, numUsers);
@@ -108,14 +108,14 @@ var generateProducts = () => {
     imageUrl: "product-images/chief-keef.jpg"
   }))
   products.push(Product.create({
-    title: "Sealab Halloween Show 2014",
+    title: "Sealab's Halloween Show 2014",
     price: 60,
     description: 'We played a house show on Halloween. I dressed up as funky Uncle Sam (Funkle Sam), my drummer was Spider-Man, and my singer was Tyrone Biggums. The wig made it unbearably hot and sweaty, and my glasses kept sliding off of my face. During our encore song, the lights went out and everyone lost their shit. Amazing vibes.',
     genre: "feel-good",
     imageUrl: "product-images/spidey.png"
   }))
   products.push(Product.create({
-    title: "First encounter with a Lion",
+    title: "First encounter with a lion",
     price: 80,
     description: "My first visit to a petting zoo in Sri Lanka. There was a section where you could pet lion cubs. I was too afraid to touch them, but my brother was much braver. You could also stick your head inside an adult lion's open mouth. About a week later, the zoo was shut down because someone got brutally mauled.",
     genre: "horror",
@@ -125,25 +125,47 @@ var generateProducts = () => {
     title: "Sippin' on that sweet coconut",
     price: 20.50,
     description: "Drinking a delicious coconut on the side of the road",
-    genre: "feel-good",
+    genre: "romance",
     imageUrl: "product-images/coconut.png"
   }))
-    
+
   products.push(Product.create({
-    title: "sand dunes in namibia",
+    title: "Sand Dunes in Namibia",
     price: 9.55,
     description: "Come experience Sosussvlei, home to the largest sand dunes in the world. Come see animals, roll down sand dunes, and campout with Paul, Diana, and Adrian.",
     genre: "feel-good",
     imageUrl: "product-images/sand-dunes.png"
   }))
-    
+
   products.push(Product.create({
-    title: "learning react-redux",
+    title: "Learning React-Redux",
     price: 18.33,
     description: "It's kind of like ripping off your skin with a pencil eraser but in a kind of enjoyable way. By the end of this magical experience, you will be able to this.setState({kill: me})",
     genre: "horror",
     imageUrl: "product-images/react.png"
-  }))  
+  }))
+  products.push(Product.create({
+    title: "Playing Shogi during a snowstorm",
+    price: 420.00,
+    description: "The year was 2015. The place was DC. There was a snowstorm and we all stayed home and chilled around the fireplace. I played a riveting game of shogi, which is essentially Japanese zombie chess, with Damon. Find out who won...",
+    genre: "thriller",
+    imageUrl: "product-images/shogi.png"
+  }))
+  products.push(Product.create({
+    title: "Chilling in a cat cafe",
+    price: 27.50,
+    description: "I hung out with some furry friends in a cat cafe, while soft lullaby music played in the background.",
+    genre: "comedy",
+    imageUrl: "product-images/catcafe.png"
+  }))
+  products.push(Product.create({
+    title: "Going to a bar called Ganja Acid",
+    price: 80.00,
+    description: "My brother and I went to a bar named Ganja Acid in Osaka. It was a tiny room, super dark, and the owner was a long-haired man who served us beer brewed with hemp. We all got drunk and he and the other regulars started showing us ridiculous Youtube videos.",
+    genre: "mystery",
+    imageUrl: "product-images/ganjaacid.png"
+  }))
+
   return products;
 }
 
@@ -156,7 +178,7 @@ var generateReviews = () => {
 	    rating: chance.integer({min: 1, max: 5})
    })
   	.then(createdReview => {
-  		return createdReview.setProduct(chance.integer( {min:1, max:5} ) )
+  		return createdReview.setProduct(chance.integer( {min:1, max:10} ) )
   	})
     .then(createdReview => {
       return createdReview.setUser(chance.integer( {min:1, max:32} ))
@@ -217,7 +239,7 @@ var generateCart = () => {
 	return doTimes(numCarts, function(){
 		return Cart.create({})
 		.then(builtCart => Promise.all([builtCart.setUser(builtCart.id), builtCart]) )
-		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 5} ) ) )
+		.spread((builtCartUser, builtCart) => builtCart.setProducts( chance.integer( {min: 1, max: 10} ) ) )
 	})
 }
 
