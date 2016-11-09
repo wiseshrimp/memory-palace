@@ -13,7 +13,7 @@ export default class UserPage extends React.Component {
                   </div>
                   <div className="panel-body">
                     <div className="row">
-                      <div className="col-md-3 col-lg-3 "> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" className="img-circle img-responsive" /> </div>
+                      <div className="col-md-3 col-lg-3 "> <img alt="User Pic" src="elliot.png" className="img-circle img-responsive" /> </div>
 
                       <div className="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br />
                         <dl>
